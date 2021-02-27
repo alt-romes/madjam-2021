@@ -11,3 +11,5 @@ data_*/
 /.vs/
 /build/
 /export/
+
+.DS_Store

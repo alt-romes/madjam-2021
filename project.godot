@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "Dialogue",
+"language": "GDScript",
+"path": "res://dialogues/Dialogue.gd"
+} ]
 _global_script_class_icons={
-
+"Dialogue": ""
 }
 
 [application]
