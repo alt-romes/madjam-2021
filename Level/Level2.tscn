@@ -1,15 +1,18 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Level/tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://PickableObj/PickableObj.tscn" type="PackedScene" id=2]
-[ext_resource path="res://PickableObj/Objects/GoldenKey.tres" type="Resource" id=3]
-[ext_resource path="res://PickableObj/Objects/LongKey.tres" type="Resource" id=4]
-[ext_resource path="res://PickableObj/Objects/SilverKey.tres" type="Resource" id=5]
-[ext_resource path="res://PickableObj/PickableObjUI.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=8]
-[ext_resource path="res://icon.png" type="Texture" id=9]
-[ext_resource path="res://dialogues/Dialogue.tscn" type="PackedScene" id=10]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Object/x.png" type="Texture" id=3]
+[ext_resource path="res://PickableObj/Objects/SilverKey.tres" type="Resource" id=4]
+[ext_resource path="res://PickableObj/PickableObj.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Object/PushableObject.tscn" type="PackedScene" id=8]
+[ext_resource path="res://dialogues/Dialogue.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Object/PushTarget.tscn" type="PackedScene" id=10]
+[ext_resource path="res://PickableObj/PickableObjUI.tscn" type="PackedScene" id=11]
+[ext_resource path="res://PickableObj/Objects/GoldenKey.tres" type="Resource" id=12]
+[ext_resource path="res://PickableObj/Objects/LongKey.tres" type="Resource" id=13]
 
 [node name="Level" type="Node2D"]
 
@@ -21,34 +24,44 @@ tile_data = PoolIntArray( 0, 2, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 5, 4, 0, 
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="Player" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 48, 240 )
-
 [node name="WinEvaluator" type="Node" parent="YSort"]
 
-[node name="PickableObj" parent="YSort/WinEvaluator" instance=ExtResource( 2 )]
+[node name="PickableObj" parent="YSort/WinEvaluator" instance=ExtResource( 5 )]
 position = Vector2( 96, 96 )
-pickable_obj_resource = ExtResource( 3 )
+pickable_obj_resource = ExtResource( 12 )
 
-[node name="PickableObj2" parent="YSort/WinEvaluator" instance=ExtResource( 2 )]
+[node name="PickableObj2" parent="YSort/WinEvaluator" instance=ExtResource( 5 )]
 position = Vector2( 216, 192 )
-pickable_obj_resource = ExtResource( 4 )
+pickable_obj_resource = ExtResource( 13 )
 
-[node name="PickableObj3" parent="YSort/WinEvaluator" instance=ExtResource( 2 )]
+[node name="PickableObj3" parent="YSort/WinEvaluator" instance=ExtResource( 5 )]
 position = Vector2( 600, 288 )
-pickable_obj_resource = ExtResource( 5 )
-
-[node name="PickableObj4" parent="YSort/WinEvaluator" instance=ExtResource( 2 )]
-position = Vector2( 216, 96 )
 pickable_obj_resource = ExtResource( 4 )
 
-[node name="NPC" parent="YSort" instance=ExtResource( 8 )]
+[node name="PickableObj4" parent="YSort/WinEvaluator" instance=ExtResource( 5 )]
+position = Vector2( 216, 96 )
+pickable_obj_resource = ExtResource( 13 )
+
+[node name="PushTarget" parent="YSort/WinEvaluator" instance=ExtResource( 10 )]
+position = Vector2( 203.553, 252.042 )
+object_node_path = NodePath("../PushableObject")
+sprite_img = ExtResource( 3 )
+
+[node name="PushableObject" parent="YSort/WinEvaluator" instance=ExtResource( 8 )]
+position = Vector2( 131.032, 252.614 )
+player_node_path = NodePath("../../Player")
+sprite_img = ExtResource( 2 )
+
+[node name="Player" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 48, 240 )
+
+[node name="NPC" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 384, 168 )
 player_node_path = NodePath("../Player")
-sprite_img = ExtResource( 9 )
+sprite_img = ExtResource( 2 )
 npc_name = "Larry"
 dialogue_list = PoolStringArray( "Once upon a time...", "... these gardens were filled with joy.", "But when the terrible event took place...", "... ony shadows now wonder around here." )
 
-[node name="PickableObjUI" parent="." instance=ExtResource( 6 )]
+[node name="PickableObjUI" parent="." instance=ExtResource( 11 )]
 
-[node name="Dialogue" parent="." instance=ExtResource( 10 )]
+[node name="Dialogue" parent="." instance=ExtResource( 9 )]
