@@ -41,13 +41,12 @@ pickable_obj_resource = ExtResource( 5 )
 player_node_path = NodePath("../../Player")
 
 [node name="PushTarget" parent="YSort/WinEvaluator" instance=ExtResource( 11 )]
-position = Vector2( 252.437, 316.784 )
+position = Vector2( 253.32, 299.289 )
 object_node_path = NodePath("../PushableObject")
 sprite_img = ExtResource( 12 )
 
 [node name="PushableObject" parent="YSort/WinEvaluator" instance=ExtResource( 10 )]
-position = Vector2( 144.957, 319.612 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 177.041, 298.28 )
 player_node_path = NodePath("../../Player")
 sprite_img = ExtResource( 9 )
 
