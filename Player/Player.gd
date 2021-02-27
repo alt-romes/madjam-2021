@@ -10,6 +10,10 @@ var FACE_LEFT = 1
 var FACE_UP = 2
 var FACE_DOWN = 3
 
+var item_scene = preload("res://PickableObj/PickableObj.tscn")
+
+var is_holding_item = false
+
 func _ready():
 	screen_size = get_viewport_rect().size
 	frame = $AnimatedSprite.frames.get_frame("default", 0)
@@ -42,9 +46,26 @@ func _physics_process(delta):
 	position.y = clamp(position.y, 0, screen_size.y)
 	
 	#set_animation(velocity)
+	
+	# input to drop picked up item
+	if Input.is_action_just_pressed("player_drop_item"):		
+		if GameState.carried_item != null:
+			
+			var item = item_scene.instance()
+			
+			item.position = position
+			item.pickable_obj_resource = GameState.carried_item
+			item.player_node_path = self.get_path()
+			
+			get_tree().root.get_node("Level").get_node("YSort").get_node("WinEvaluator").add_child(item)
+			
+			GameState.carried_item = null
+			is_holding_item = false
+			
+	
 
 func check_movement(velocity : Vector2):
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("player_right"):
 		velocity.x += 1
 		$AnimatedSprite.flip_h = false
 		
@@ -55,7 +76,7 @@ func check_movement(velocity : Vector2):
 		
 		direction = FACE_RIGHT
 		
-	elif Input.is_action_pressed("ui_left"):
+	elif Input.is_action_pressed("player_left"):
 		velocity.x -= 1
 		$AnimatedSprite.flip_h = true
 		$TriggerArea/TriggerShape.position.x = frame.get_width() / 10 * -1
@@ -65,7 +86,7 @@ func check_movement(velocity : Vector2):
 		
 		direction = FACE_LEFT
 		
-	elif Input.is_action_pressed("ui_up"):
+	elif Input.is_action_pressed("player_up"):
 		velocity.y -= 1
 
 		$TriggerArea/TriggerShape.position.x = 0 #frame.get_width() / 2 * -1
@@ -75,8 +96,7 @@ func check_movement(velocity : Vector2):
 		
 		direction = FACE_UP
 		
-	elif Input.is_action_pressed("ui_down"):
-		velocity.y += 1
+	elif Input.is_action_pressed("player_down"):
 		
 		$TriggerArea/TriggerShape.position.x = 0 #frame.get_width() / 2 * -1
 		$TriggerArea/TriggerShape.position.y = frame.get_height() / 10 * 1

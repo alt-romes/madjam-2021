@@ -2,7 +2,8 @@ extends Node2D
 
 export var player_node_path : NodePath
 export var sprite_img : Texture
-export var dialogue_list : Array
+export var npc_name : String
+export var dialogue_list : PoolStringArray
 
 onready var sprite_node = $Sprite
 onready var player_node = get_node(player_node_path)
