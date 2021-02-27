@@ -18,11 +18,11 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	frame = $AnimatedSprite.frames.get_frame("default", 0)
 	$TriggerArea/TriggerShape.position.x = 0
-	$TriggerArea/TriggerShape.position.y = frame.get_height() / 10 * -1
+	$TriggerArea/TriggerShape.position.y = frame.get_height() / 10.0 * -1
 	$CollisionShape2D.position = $AnimatedSprite.position
-	$CollisionShape2D.get_shape().extents = Vector2(frame.get_width() / 2, frame.get_height() / 2)
+	$CollisionShape2D.get_shape().extents = Vector2(frame.get_width() / 2.0, frame.get_height() / 2.0)
 
-	$TriggerArea/TriggerShape.get_shape().extents = Vector2(frame.get_width() / 2, (frame.get_height() / 2))
+	$TriggerArea/TriggerShape.get_shape().extents = Vector2(frame.get_width() / 2.0, (frame.get_height() / 2.0))
 
 func get_direction():
 	return direction
@@ -69,20 +69,20 @@ func check_movement(velocity : Vector2):
 		velocity.x += 1
 		$AnimatedSprite.flip_h = false
 		
-		$TriggerArea/TriggerShape.position.x = frame.get_width() / 10 * 1
+		$TriggerArea/TriggerShape.position.x = frame.get_width() / 10.0 * 1
 		$TriggerArea/TriggerShape.position.y = 0
 			
-		$TriggerArea/TriggerShape.get_shape().extents = Vector2(frame.get_width() / 2, (frame.get_height() / 2))
+		$TriggerArea/TriggerShape.get_shape().extents = Vector2(frame.get_width() / 2.0, (frame.get_height() / 2.0))
 		
 		direction = FACE_RIGHT
 		
 	elif Input.is_action_pressed("player_left"):
 		velocity.x -= 1
 		$AnimatedSprite.flip_h = true
-		$TriggerArea/TriggerShape.position.x = frame.get_width() / 10 * -1
+		$TriggerArea/TriggerShape.position.x = frame.get_width() / 10.0 * -1
 		$TriggerArea/TriggerShape.position.y = 0
 		
-		$TriggerArea/TriggerShape.get_shape().extents = Vector2(frame.get_width() / 2, (frame.get_height() / 2))
+		$TriggerArea/TriggerShape.get_shape().extents = Vector2(frame.get_width() / 2.0, (frame.get_height() / 2.0))
 		
 		direction = FACE_LEFT
 		
@@ -90,18 +90,18 @@ func check_movement(velocity : Vector2):
 		velocity.y -= 1
 
 		$TriggerArea/TriggerShape.position.x = 0 #frame.get_width() / 2 * -1
-		$TriggerArea/TriggerShape.position.y = frame.get_height() / 10 * -1
+		$TriggerArea/TriggerShape.position.y = frame.get_height() / 10.0 * -1
 		
-		$TriggerArea/TriggerShape.get_shape().extents = Vector2(frame.get_width() / 2, (frame.get_height() / 2))
+		$TriggerArea/TriggerShape.get_shape().extents = Vector2(frame.get_width() / 2.0, (frame.get_height() / 2.0))
 		
 		direction = FACE_UP
 		
 	elif Input.is_action_pressed("player_down"):
 		
 		$TriggerArea/TriggerShape.position.x = 0 #frame.get_width() / 2 * -1
-		$TriggerArea/TriggerShape.position.y = frame.get_height() / 10 * 1
+		$TriggerArea/TriggerShape.position.y = frame.get_height() / 10.0 * 1
 		
-		$TriggerArea/TriggerShape.get_shape().extents = Vector2(frame.get_width() / 2, (frame.get_height() / 2))
+		$TriggerArea/TriggerShape.get_shape().extents = Vector2(frame.get_width() / 2.0, (frame.get_height() / 2.0))
 		
 		direction = FACE_DOWN
 		

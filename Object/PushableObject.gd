@@ -24,11 +24,11 @@ var is_moving = false
 func _ready():	
 	screen_size = get_viewport_rect().size
 	sprite_node.texture = sprite_img
-	sprite_node.position = Vector2(sprite_img.get_width() / 2 * -1, sprite_img.get_height() / 2 * -1)
+	sprite_node.position = Vector2(sprite_img.get_width() / 2.0 * -1.0, sprite_img.get_height() / 2.0 * -1.0)
 	$CollisionShape2D.position = sprite_node.position
-	$CollisionShape2D.get_shape().extents = Vector2(sprite_img.get_width() / 2, sprite_img.get_height() / 2)
+	$CollisionShape2D.get_shape().extents = Vector2(sprite_img.get_width() / 2.0, sprite_img.get_height() / 2.0)
 	$Area2D/CollisionShape2D.position = sprite_node.position
-	$Area2D/CollisionShape2D.get_shape().extents = Vector2(sprite_img.get_width() / 2, sprite_img.get_height() / 2)
+	$Area2D/CollisionShape2D.get_shape().extents = Vector2(sprite_img.get_width() / 2.0, sprite_img.get_height() / 2.0)
 
 func _process(delta):
 	
@@ -37,10 +37,10 @@ func _process(delta):
 		if trigger_area.overlaps_area($Area2D) and !is_moving:
 			travelled_distance = 0
 			is_moving = true
-			velocity = push(player_node.get_direction(), velocity)
+			velocity = push(player_node.get_direction())
 			
 	if is_moving and travelled_distance < push_distance:
-		move_object(velocity,delta)
+		move_object(delta)
 	elif is_moving and travelled_distance >= push_distance:
 		is_moving = false
 		travelled_distance = 0
@@ -49,23 +49,23 @@ func _process(delta):
 	position.x = clamp(position.x, sprite_img.get_width(), screen_size.x)
 	position.y = clamp(position.y, sprite_img.get_height(), screen_size.y)
 
-func push(direction, velocity):
+func push(direction):
 	match direction:
 		FACE_RIGHT:
-			velocity.x += 1
+			velocity.x += 1.0
 		FACE_LEFT:
-			velocity.x -= 1
+			velocity.x -= 1.0
 		FACE_UP:
-			velocity.y -= 1
+			velocity.y -= 1.0
 		FACE_DOWN:
-			velocity.y += 1
+			velocity.y += 1.0
 		_:
 			print("Invalid direction")
 				
 	return velocity
 	
 
-func move_object(velocity,delta):
+func move_object(delta):
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 	
