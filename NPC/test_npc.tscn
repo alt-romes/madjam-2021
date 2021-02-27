@@ -20,17 +20,14 @@ sprite_img = ExtResource( 2 )
 [node name="Key" parent="." instance=ExtResource( 3 )]
 position = Vector2( 353.184, 322.052 )
 pickable_obj_resource = ExtResource( 4 )
-player_node_path = NodePath("../Player")
 
 [node name="Key2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 611.642, 324.299 )
 pickable_obj_resource = ExtResource( 7 )
-player_node_path = NodePath("../Player")
 
 [node name="Key3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 482.039, 322.052 )
 pickable_obj_resource = ExtResource( 8 )
-player_node_path = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( 462.228, 149.831 )

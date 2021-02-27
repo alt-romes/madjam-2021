@@ -8,6 +8,10 @@ onready var dialogue_text_animp = dialogue_text.get_node("AnimationPlayer")
 func _ready():
 	dialogue_box.visible = false # hide ui box
 	
+func _process(delta):
+	
+	if Input.is_action_just_pressed("player_interact"):
+		_on_Dialogue_dialogue_interact(current_dialogue)
 
 # Internal state
 
@@ -20,7 +24,7 @@ var current_sentence : int = 0
 func _start_new_dialogue(dialogue : Dialogue):
 	# Reset dialogue state
 	current_dialogue = dialogue
-	current_sentence = 0
+	current_sentence = 0	
 	# Show ui box
 	dialogue_box.visible = true
 	# Display first sentence
@@ -28,17 +32,19 @@ func _start_new_dialogue(dialogue : Dialogue):
 
 func _display_next_sentence():
 	if !dialogue_text_animp.is_playing():
+		dialogue_text.percent_visible = 0
 		if (current_dialogue.has_sentence(current_sentence)):
 			# Dialogue has more sentences to display
 			dialogue_text.text = current_dialogue.get_sentence(current_sentence)
 			current_sentence += 1
-			dialogue_text_animp.play("Text Animation")
+			dialogue_text_animp.play("Text Animation")			
 		else:
 			# Dialogue has ended
 			_end_dialogue()
 
 func _end_dialogue():
 	dialogue_box.visible = false
+	current_dialogue = null
 	# perhaps signal player
 	# emit_signal("dialogue_ended") ?
 
@@ -47,10 +53,18 @@ func _end_dialogue():
 
 # warning-ignore:unused_signal
 signal dialogue_interact
+signal dialogue_cancel
 
-func _on_Dialogue_dialogue_interact(dialogue : Dialogue):
-	print("Teste2")
+func _on_Dialogue_dialogue_interact(dialogue : Dialogue):	
+	
+	if dialogue == null:
+		return
+				
 	if current_dialogue == null:
-		_start_new_dialogue(dialogue)
+		_start_new_dialogue(dialogue)		
 	elif current_dialogue == dialogue:
 		_display_next_sentence()
+
+
+func _on_Dialogue_dialogue_cancel():
+	_end_dialogue()	
