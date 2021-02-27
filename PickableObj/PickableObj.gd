@@ -11,14 +11,14 @@ var player_node
 #onready var dialogue_node = get_node("../Dialogue")
 
 var res : PickableObjData
-var dialogue : Dialogue
+#var dialogue : Dialogue
 
 signal set_dialogue(text)
 signal pickup(obj_name, resource)
 
 func _ready():		
 	res = pickable_obj_resource
-	dialogue = Dialogue.new([res.dialogue_line])
+#	dialogue = Dialogue.new([res.dialogue_line])
 	
 	sprite_node = $Sprite
 	player_node = get_node(player_node_path)	
