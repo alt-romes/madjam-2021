@@ -44,6 +44,7 @@ func _end_dialogue():
 
 # Events
 
+# warning-ignore:unused_signal
 signal dialogue_interact
 
 func _on_Dialogue_dialogue_interact(dialogue : Dialogue):
