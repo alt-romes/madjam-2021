@@ -38,7 +38,7 @@ func _process(delta):
 			item.pickable_obj_resource = GameState.carried_item
 			item.player_node_path = self.get_path()
 			
-			get_node("../../main").add_child(item)
+			get_tree().root.get_node("Level").get_node("YSort").get_node("WinEvaluator").add_child(item)
 			
 			GameState.carried_item = null
 			is_holding_item = false
