@@ -43,27 +43,26 @@ func _physics_process(delta):
 	#	$AnimatedSprite.stop()
 	
 	var motion = velocity * delta
-	move_and_slide(velocity)
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
+	move_and_collide(motion)
+	# Technically there are no borders
+	#position.x = clamp(position.x, 0, screen_size.x)
+	#position.y = clamp(position.y, 0, screen_size.y)
 	
 	#set_animation(velocity)
 	
 	# input to drop picked up item
-	if Input.is_action_just_pressed("player_drop_item"):		
+	if Input.is_action_just_pressed("player_drop_item") && is_holding_item:		
 		if GameState.carried_item != null:
 			
 			var item = item_scene.instance()
 			
 			item.position = position
 			item.pickable_obj_resource = GameState.carried_item
-			item.player_node_path = self.get_path()
 			
 			get_tree().root.get_node("Level").get_node("YSort").get_node("WinEvaluator").add_child(item)
 			
 			GameState.carried_item = null
-			is_holding_item = false
-			
+			is_holding_item = false			
 	
 
 func check_movement(velocity : Vector2):
