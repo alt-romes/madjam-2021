@@ -13,9 +13,9 @@ func _process(delta):
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-		$AnimatedSprite.play()
-	else:
-		$AnimatedSprite.stop()
+	#	$AnimatedSprite.play()
+	#else:
+	#	$AnimatedSprite.stop()
 	
 	var motion = velocity * delta
 	move_and_collide(motion)
@@ -42,6 +42,3 @@ func set_animation(velocity : Vector2):
 		$AnimatedSprite.animation = "walk"
 		$AnimatedSprite.flip_v = false
 		$AnimatedSprite.flip_h = velocity.x < 0
-	elif velocity.y != 0:
-		$AnimatedSprite.animation = "up"
-		$AnimatedSprite.flip_v = velocity.y > 0
