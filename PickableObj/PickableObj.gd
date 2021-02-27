@@ -19,10 +19,10 @@ func _ready():
 	sprite_node.texture = sprite_img
 	sprite_node.position = Vector2(sprite_img.get_width() / 2 * -1, sprite_img.get_height() * -1)
 
-func _process(delta):	
+func _process(delta):
 	# pickup / dialogue triggers
-	if Input.is_action_just_pressed("ui_accept"):		
-		var trigger_area : Area2D  = player_node.get_node("TriggerArea")		
+	if Input.is_action_just_pressed("ui_accept"):
+		var trigger_area : Area2D  = player_node.get_node("TriggerArea")
 		if trigger_area.overlaps_area($TriggerArea):
 			pickup()
 			if !dialogue_line.empty():
@@ -30,7 +30,7 @@ func _process(delta):
 
 func say_dialogue() -> void:
 	emit_signal("set_dialogue", dialogue_line)
-	print(obj_name + "says: " + dialogue_line)
+	print(obj_name + " says: " + dialogue_line)
 	
 func pickup() -> void:
 	emit_signal("pickup", obj_name)	

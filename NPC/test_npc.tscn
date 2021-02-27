@@ -1,21 +1,26 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://PickableObj/PickableObj.tscn" type="PackedScene" id=3]
+[ext_resource path="res://PickableObj/key_02.png" type="Texture" id=4]
 
 [node name="main" type="Node"]
 
-[node name="icon" type="Sprite" parent="."]
-position = Vector2( 69.2698, 77.0183 )
-texture = ExtResource( 2 )
-
 [node name="nancy" parent="." instance=ExtResource( 1 )]
-position = Vector2( 100.5, 45.3267 )
-player_node_path = NodePath("../NPC")
+position = Vector2( 223.524, 198.511 )
+player_node_path = NodePath("../Player")
 sprite_img = ExtResource( 2 )
 dialogue_list = [ "Its time to kill.....", "But who should I kill?", "Oh! You're voluntering? How nice of you :)" ]
 
-[node name="NPC" parent="." instance=ExtResource( 1 )]
-position = Vector2( 450.033, 153.829 )
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 261.132, 172.878 )
 player_node_path = NodePath("../nancy")
 sprite_img = ExtResource( 2 )
+
+[node name="Key" parent="." instance=ExtResource( 3 )]
+position = Vector2( 259.54, 225.411 )
+obj_name = "Golden Key"
+dialogue_line = "It's a shiny golden key."
+player_node_path = NodePath("../Player")
+sprite_img = ExtResource( 4 )
