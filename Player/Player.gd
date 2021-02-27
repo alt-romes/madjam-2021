@@ -43,7 +43,7 @@ func _physics_process(delta):
 	#	$AnimatedSprite.stop()
 	
 	var motion = velocity * delta
-	move_and_collide(motion)
+	move_and_slide(velocity)
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
 	
