@@ -29,6 +29,8 @@ func _ready():
 	$CollisionShape2D.get_shape().extents = Vector2(sprite_img.get_width() / 2.0, sprite_img.get_height() / 2.0)
 	$Area2D/CollisionShape2D.position = sprite_node.position
 	$Area2D/CollisionShape2D.get_shape().extents = Vector2(sprite_img.get_width() / 2.0, sprite_img.get_height() / 2.0)
+	position.x = position.x / 24 * 24 + 12
+	position.y = position.y / 24 * 24 + 12
 
 func _process(delta):
 	
@@ -69,6 +71,13 @@ func move_object(delta):
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 	
-	var motion = velocity * delta
+	var motion = Vector2()
+	motion.x = int(round(velocity.x * delta))
+	motion.y = int(round(velocity.y * delta))
 	move_and_collide(motion)
-	travelled_distance += speed * delta
+	if(velocity.length() > 0 and velocity.x > 0):
+		travelled_distance += motion.x
+	elif(velocity.length() > 0 and velocity.y >0):
+		travelled_distance += motion.y
+		
+	print(travelled_distance)
