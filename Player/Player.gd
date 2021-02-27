@@ -29,7 +29,7 @@ func _process(delta):
 	#set_animation(velocity)
 	
 	# input to drop picked up item
-	if Input.is_action_just_pressed("ui_accept"):		
+	if Input.is_action_just_pressed("player_drop_item"):		
 		if GameState.carried_item != null:
 			
 			var item = item_scene.instance()
@@ -46,13 +46,13 @@ func _process(delta):
 	
 
 func check_movement(velocity : Vector2):
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("player_right"):
 		velocity.x += 1
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("player_left"):
 		velocity.x -= 1
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("player_up"):
 		velocity.y -= 1
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("player_down"):
 		velocity.y += 1
 		
 	return velocity
