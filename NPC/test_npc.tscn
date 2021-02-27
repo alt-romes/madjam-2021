@@ -1,26 +1,39 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://PickableObj/PickableObj.tscn" type="PackedScene" id=3]
-[ext_resource path="res://PickableObj/key_02.png" type="Texture" id=4]
+[ext_resource path="res://PickableObj/GoldenKey.tres" type="Resource" id=4]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://PickableObj/PickableObjUI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://PickableObj/SilverKey.tres" type="Resource" id=7]
+[ext_resource path="res://PickableObj/LongKey.tres" type="Resource" id=8]
 
 [node name="main" type="Node"]
 
 [node name="nancy" parent="." instance=ExtResource( 1 )]
-position = Vector2( 223.524, 198.511 )
+visible = false
+position = Vector2( 41.4797, 55.4227 )
 player_node_path = NodePath("../Player")
 sprite_img = ExtResource( 2 )
 dialogue_list = [ "Its time to kill.....", "But who should I kill?", "Oh! You're voluntering? How nice of you :)" ]
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 261.132, 172.878 )
-player_node_path = NodePath("../nancy")
-sprite_img = ExtResource( 2 )
-
 [node name="Key" parent="." instance=ExtResource( 3 )]
-position = Vector2( 259.54, 225.411 )
-obj_name = "Golden Key"
-dialogue_line = "It's a shiny golden key."
+position = Vector2( 353.184, 322.052 )
+pickable_obj_resource = ExtResource( 4 )
 player_node_path = NodePath("../Player")
-sprite_img = ExtResource( 4 )
+
+[node name="Key2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 611.642, 324.299 )
+pickable_obj_resource = ExtResource( 7 )
+player_node_path = NodePath("../Player")
+
+[node name="Key3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 482.039, 322.052 )
+pickable_obj_resource = ExtResource( 8 )
+player_node_path = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+position = Vector2( 462.228, 149.831 )
+
+[node name="PickableObjUI" parent="." instance=ExtResource( 6 )]
