@@ -6,10 +6,9 @@ export var npc_name : String
 export var dialogue_list : PoolStringArray
 
 onready var sprite_node = $Sprite
-onready var player_node = get_node(player_node_path)
+onready var player_node = get_tree().root.get_node("Level").get_node("YSort").get_node("Player")
 onready var dialogue_node = get_tree().root.get_node("Level").get_node("Dialogue")
 
-#var dialogue_index : int = 0
 var dialogue : Dialogue
 
 signal set_dialogue(text)
@@ -25,8 +24,6 @@ func _process(delta):
 		var trigger_area : Area2D  = player_node.get_node("TriggerArea")		
 		if trigger_area.overlaps_area($TriggerArea):			
 			dialogue_node.emit_signal("dialogue_interact", dialogue)
-		else:
-			dialogue_node.emit_signal("dialogue_cancel")
 		
 
 #func say_dialogue() -> void:	

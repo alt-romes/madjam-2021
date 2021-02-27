@@ -31,7 +31,7 @@ position = Vector2( 96, 96 )
 pickable_obj_resource = ExtResource( 3 )
 
 [node name="PickableObj2" parent="YSort/WinEvaluator" instance=ExtResource( 2 )]
-position = Vector2( 264, 192 )
+position = Vector2( 216, 192 )
 pickable_obj_resource = ExtResource( 4 )
 
 [node name="PickableObj3" parent="YSort/WinEvaluator" instance=ExtResource( 2 )]
@@ -43,7 +43,7 @@ position = Vector2( 216, 96 )
 pickable_obj_resource = ExtResource( 4 )
 
 [node name="NPC" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 48, 120 )
+position = Vector2( 384, 168 )
 player_node_path = NodePath("../Player")
 sprite_img = ExtResource( 9 )
 npc_name = "Larry"

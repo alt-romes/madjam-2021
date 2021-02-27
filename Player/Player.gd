@@ -29,7 +29,7 @@ func _process(delta):
 	#set_animation(velocity)
 	
 	# input to drop picked up item
-	if Input.is_action_just_pressed("player_drop_item"):		
+	if Input.is_action_just_pressed("player_drop_item") && is_holding_item:		
 		if GameState.carried_item != null:
 			
 			var item = item_scene.instance()
