@@ -48,8 +48,7 @@ func _end_dialogue():
 # warning-ignore:unused_signal
 signal dialogue_interact
 
-func _on_Dialogue_dialogue_interact(dialogue : Dialogue):
-	print("Teste2")
+func _on_Dialogue_dialogue_interact(dialogue : Dialogue):	
 	if current_dialogue == null:
 		_start_new_dialogue(dialogue)
 	elif current_dialogue == dialogue:

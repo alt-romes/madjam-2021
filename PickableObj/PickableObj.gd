@@ -4,7 +4,6 @@ extends Node2D
 # line when they are picked up.
 
 export var pickable_obj_resource : Resource
-export var player_node_path : NodePath
 
 var sprite_node
 var player_node
@@ -21,7 +20,7 @@ func _ready():
 #	dialogue = Dialogue.new([res.dialogue_line])
 	
 	sprite_node = $Sprite
-	player_node = get_node(player_node_path)	
+	player_node = get_tree().root.get_node("Level").get_node("YSort").get_node("Player")
 	
 	# set up this obj texture
 	sprite_node.texture = res.texture

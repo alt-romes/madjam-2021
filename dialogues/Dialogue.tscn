@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://dialoguetexture_but_better.png" type="Texture" id=1]
+[ext_resource path="res://dialogue_box.png" type="Texture" id=1]
 [ext_resource path="res://dialogues/DialogueController.gd" type="Script" id=2]
 [ext_resource path="res://font.tres" type="DynamicFont" id=3]
 
@@ -25,6 +25,8 @@ script = ExtResource( 2 )
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -0.396851
+margin_bottom = -0.396851
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -64,7 +66,7 @@ margin_right = 592.0
 margin_bottom = 40.0
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "What the fuck is this godot ui stuff..."
 autowrap = true
 
