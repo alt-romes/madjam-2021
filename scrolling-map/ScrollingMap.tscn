@@ -16,6 +16,7 @@ right_border = 2
 
 [node name="Level2" parent="Levels" instance=ExtResource( 4 )]
 visible = false
+level_id = 1
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 

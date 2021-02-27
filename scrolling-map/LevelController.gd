@@ -13,6 +13,8 @@ export var right_border : int
 export var top_border : int
 export var bottom_border : int
 
+export var level_id : int
+
 var borders : Dictionary
 
 func _ready():
