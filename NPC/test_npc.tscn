@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[node name="main" type="Node"]
+
+[node name="icon" type="Sprite" parent="."]
+position = Vector2( 69.2698, 77.0183 )
+texture = ExtResource( 2 )
+
+[node name="nancy" parent="." instance=ExtResource( 1 )]
+position = Vector2( 100.5, 45.3267 )
+player_node_path = NodePath("../NPC")
+sprite_img = ExtResource( 2 )
+dialogue_list = [ "Its time to kill.....", "But who should I kill?", "Oh! You're voluntering? How nice of you :)" ]
+
+[node name="NPC" parent="." instance=ExtResource( 1 )]
+position = Vector2( 450.033, 153.829 )
+player_node_path = NodePath("../nancy")
+sprite_img = ExtResource( 2 )
