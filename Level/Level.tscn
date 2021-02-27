@@ -44,7 +44,7 @@ player_node_path = NodePath("../../Player")
 position = Vector2( 432, 72 )
 player_node_path = NodePath("../Player")
 sprite_img = ExtResource( 9 )
-npc_name = "Larry"
-dialogue_list = PoolStringArray( "Once upon a time...", "... these gardens were filled with joy.", "But when the terrible event took place...", "... ony shadows now wonder around here." )
+npc_name = "Buford"
+dialogue_list = PoolStringArray( "Once upon a times...", "... these gardens were filled with joy.", "But when the terrible event took place...", "... ony shadows now wonder around here." )
 
 [node name="PickableObjUI" parent="." instance=ExtResource( 6 )]
