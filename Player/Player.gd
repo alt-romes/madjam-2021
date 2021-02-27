@@ -44,8 +44,9 @@ func _physics_process(delta):
 	
 	var motion = velocity * delta
 	move_and_collide(motion)
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
+	# Technically there are no borders
+	#position.x = clamp(position.x, 0, screen_size.x)
+	#position.y = clamp(position.y, 0, screen_size.y)
 	
 	#set_animation(velocity)
 	
