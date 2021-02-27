@@ -3,10 +3,12 @@ extends Node2D
 # pickable objects will be able to set a dialogue
 # line when they are picked up.
 
+class_name PickableObj
+
 export var pickable_obj_resource : Resource
 
-onready var player_node = get_tree().root.get_node("Level").get_node("YSort").get_node("Player")
-onready var dialogue_node = get_tree().root.get_node("Level").get_node("Dialogue")
+onready var player_node = get_tree().root.get_node("Main/Player")
+onready var dialogue_node = get_tree().root.get_node("Main/CanvasLayer/Dialogue")
 
 var sprite_node
 

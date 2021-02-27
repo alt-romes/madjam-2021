@@ -6,8 +6,8 @@ export var npc_name : String
 export var dialogue_list : PoolStringArray
 
 onready var sprite_node = $Sprite
-onready var player_node = get_tree().root.get_node("Level").get_node("YSort").get_node("Player")
-onready var dialogue_node = get_tree().root.get_node("Level").get_node("Dialogue")
+onready var player_node = get_tree().root.get_node("Main/Player")
+onready var dialogue_node = get_tree().root.get_node("Main/CanvasLayer/Dialogue")
 
 var dialogue : Dialogue
 

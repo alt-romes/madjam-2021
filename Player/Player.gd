@@ -51,18 +51,21 @@ func _physics_process(delta):
 	#set_animation(velocity)
 	
 	# input to drop picked up item
-	if Input.is_action_just_pressed("player_drop_item") && is_holding_item:		
+	if Input.is_action_just_pressed("player_drop_item") && is_holding_item:
 		if GameState.carried_item != null:
 			
 			var item = item_scene.instance()
 			
-			item.position = position
+			print(position, "   ", global_position)
+			item.global_position = global_position
 			item.pickable_obj_resource = GameState.carried_item
 			
-			get_tree().root.get_node("Level").get_node("YSort").get_node("WinEvaluator").add_child(item)
+			get_tree().root.get_node("Main").item_dropped(item)
+			
+			#get_tree().root.get_node("Levels/Level").get_node("YSort").get_node("WinEvaluator").add_child(item)
 			
 			GameState.carried_item = null
-			is_holding_item = false			
+			is_holding_item = false
 	
 
 func check_movement(velocity : Vector2):
@@ -72,7 +75,7 @@ func check_movement(velocity : Vector2):
 		
 		$TriggerArea/TriggerShape.position.x = frame.get_width() / 10.0 * 1
 		$TriggerArea/TriggerShape.position.y = 0
-			
+		
 		$TriggerArea/TriggerShape.get_shape().extents = collision_size
 		
 		direction = FACE_RIGHT
