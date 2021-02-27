@@ -51,23 +51,39 @@ func _load_level_borders():
 	for side in borders:
 		if borders[side] == Level.BorderType.LIMIT_SIDE:
 			_limit_camera(side)
-		elif borders[side] == Level.BorderType.EXIT_SIDE:
+		else:
+			_reset_camera_limit(side)
+			
+		if borders[side] == Level.BorderType.EXIT_SIDE:
 			_load_exit(side)
 
 func _limit_camera(side : String):
 	# Side is : left | right | top | bottom
 	var limit_val = null
 	if side == "left":
-		limit_val = -level_size[0]/2
+		limit_val = -level_size[0]/2 - current_level_center_index[0]*level_size[0]
 	elif side == "right":
-		limit_val = level_size[0]/2
+		limit_val = level_size[0]/2 + current_level_center_index[0]*level_size[0]
 	elif side == "top":
-		limit_val = -level_size[1]/2
+		limit_val = -level_size[1]/2 - current_level_center_index[1]*level_size[1]
 	elif side == "bottom":
-		limit_val = level_size[1]/2
+		limit_val = level_size[1]/2 + current_level_center_index[1]*level_size[1]
 	
 	camera["limit_"+side] = limit_val
+
+func _reset_camera_limit(side : String):
+	var limit_val = null
+	if side == "left":
+		limit_val = -10000000
+	elif side == "right":
+		limit_val = 10000000
+	elif side == "top":
+		limit_val = -10000000
+	elif side == "bottom":
+		limit_val = 10000000
 	
+	camera["limit_"+side] = limit_val
+
 func _load_exit(side : String):
 	# Load the next or the same level next to the exit
 	
