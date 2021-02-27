@@ -27,14 +27,15 @@ func _start_new_dialogue(dialogue : Dialogue):
 	_display_next_sentence()
 
 func _display_next_sentence():
-	if (current_dialogue.has_sentence(current_sentence)):
-		# Dialogue has more sentences to display
-		dialogue_text.text = current_dialogue.get_sentence(current_sentence)
-		current_sentence += 1
-		dialogue_text_animp.play("Text Animation")
-	else:
-		# Dialogue has ended
-		_end_dialogue()
+	if !dialogue_text_animp.is_playing():
+		if (current_dialogue.has_sentence(current_sentence)):
+			# Dialogue has more sentences to display
+			dialogue_text.text = current_dialogue.get_sentence(current_sentence)
+			current_sentence += 1
+			dialogue_text_animp.play("Text Animation")
+		else:
+			# Dialogue has ended
+			_end_dialogue()
 
 func _end_dialogue():
 	dialogue_box.visible = false
