@@ -71,6 +71,13 @@ func move_object(delta):
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 	
-	var motion = velocity * delta
+	var motion = Vector2()
+	motion.x = int(round(velocity.x * delta))
+	motion.y = int(round(velocity.y * delta))
 	move_and_collide(motion)
-	travelled_distance += speed * delta
+	if(velocity.length() > 0 and velocity.x > 0):
+		travelled_distance += motion.x
+	elif(velocity.length() > 0 and velocity.y >0):
+		travelled_distance += motion.y
+		
+	print(travelled_distance)
