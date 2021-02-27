@@ -60,9 +60,8 @@ func _physics_process(delta):
 			item.global_position = global_position
 			item.pickable_obj_resource = GameState.carried_item
 			
-			get_tree().root.get_node("Main").item_dropped(item)
+			get_parent().item_dropped(item) # parent = Main
 			
-			#get_tree().root.get_node("Levels/Level").get_node("YSort").get_node("WinEvaluator").add_child(item)
 			
 			GameState.carried_item = null
 			is_holding_item = false

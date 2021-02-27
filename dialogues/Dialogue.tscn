@@ -41,7 +41,6 @@ margin_left = -308.0
 margin_top = -64.0
 margin_right = 308.0
 margin_bottom = -64.0
-rect_min_size = Vector2( 616, 64 )
 texture = ExtResource( 1 )
 patch_margin_left = 11
 patch_margin_top = 11
@@ -54,17 +53,13 @@ __meta__ = {
 [node name="MarginContainer" type="MarginContainer" parent="Control/Box"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 12.0
-margin_top = 12.0
-margin_right = -12.0
-margin_bottom = -12.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Text" type="Label" parent="Control/Box/MarginContainer"]
-margin_right = 592.0
-margin_bottom = 40.0
+margin_right = 616.0
+margin_bottom = 24.0
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
