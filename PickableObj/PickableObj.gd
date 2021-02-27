@@ -31,7 +31,7 @@ func _ready():
 
 func _process(delta):
 	# pickup / dialogue triggers
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("player_interact"):
 		
 		var trigger_area : Area2D  = player_node.get_node("TriggerArea")
 		
