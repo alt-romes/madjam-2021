@@ -11,7 +11,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=2]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 20.5549, 49.6451 )
@@ -23,6 +23,7 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
 
 [node name="TriggerArea" type="Area2D" parent="."]
@@ -30,7 +31,7 @@ frames = SubResource( 1 )
 [node name="TriggerShape" type="CollisionShape2D" parent="TriggerArea"]
 modulate = Color( 0.607843, 0.172549, 0.172549, 1 )
 self_modulate = Color( 0.662745, 0.262745, 0.262745, 1 )
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color( 0.717647, 0.25098, 0.25098, 1 )
