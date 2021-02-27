@@ -22,3 +22,6 @@ func _ready():
 		"top": top_border,
 		"bottom": bottom_border
 	}
+
+func is_finished():
+	return false
