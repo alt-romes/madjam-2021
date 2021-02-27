@@ -29,6 +29,8 @@ func _ready():
 	$CollisionShape2D.get_shape().extents = Vector2(sprite_img.get_width() / 2.0, sprite_img.get_height() / 2.0)
 	$Area2D/CollisionShape2D.position = sprite_node.position
 	$Area2D/CollisionShape2D.get_shape().extents = Vector2(sprite_img.get_width() / 2.0, sprite_img.get_height() / 2.0)
+	position.x = position.x / 24 * 24 + 12
+	position.y = position.y / 24 * 24 + 12
 
 func _process(delta):
 	
