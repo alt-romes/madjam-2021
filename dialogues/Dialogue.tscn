@@ -6,6 +6,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "Text Animation"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:percent_visible")
 tracks/0/interp = 1
@@ -69,7 +70,9 @@ custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "What the fuck is this godot ui stuff..."
 autowrap = true
+percent_visible = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Box/MarginContainer/Text"]
 "anims/Text Animation" = SubResource( 1 )
+[connection signal="dialogue_cancel" from="." to="." method="_on_Dialogue_dialogue_cancel"]
 [connection signal="dialogue_interact" from="." to="." method="_on_Dialogue_dialogue_interact"]

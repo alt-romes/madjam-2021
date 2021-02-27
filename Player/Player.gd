@@ -40,8 +40,7 @@ func _process(delta):
 			get_tree().root.get_node("Level").get_node("YSort").get_node("WinEvaluator").add_child(item)
 			
 			GameState.carried_item = null
-			is_holding_item = false
-			
+			is_holding_item = false			
 	
 
 func check_movement(velocity : Vector2):

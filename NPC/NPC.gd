@@ -21,14 +21,15 @@ func _ready():
 
 func _process(delta):
 	
-	if Input.is_action_just_pressed("ui_accept") and dialogue_list.size() > 0:		
+	if Input.is_action_just_pressed("player_interact") and dialogue_list.size() > 0:		
 		var trigger_area : Area2D  = player_node.get_node("TriggerArea")		
-		if trigger_area.overlaps_area($TriggerArea):
-			say_dialogue()
+		if trigger_area.overlaps_area($TriggerArea):			
+			dialogue_node.emit_signal("dialogue_interact", dialogue)
+		else:
+			dialogue_node.emit_signal("dialogue_cancel")
 		
 
-func say_dialogue() -> void:
-	dialogue_node.emit_signal("dialogue_interact", dialogue)
+#func say_dialogue() -> void:	
 	#emit_signal("set_dialogue", dialogue_list[dialogue_index])
 	#print(dialogue_list[dialogue_index])
 	#dialogue_index = (dialogue_index + 1) % dialogue_list.size()
