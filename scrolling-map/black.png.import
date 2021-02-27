@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dialoguetexture.png-41b718ff9a35c179c51a91e546e71684.stex"
+path="res://.import/black.png-c976161d62487ec61241331b7e867cee.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://dialoguetexture.png"
-dest_files=[ "res://.import/dialoguetexture.png-41b718ff9a35c179c51a91e546e71684.stex" ]
+source_file="res://scrolling-map/black.png"
+dest_files=[ "res://.import/black.png-c976161d62487ec61241331b7e867cee.stex" ]
 
 [params]
 
