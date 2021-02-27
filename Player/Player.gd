@@ -3,6 +3,10 @@ extends KinematicBody2D
 export var speed = 200
 var screen_size
 
+var item_scene = preload("res://PickableObj/PickableObj.tscn")
+
+var is_holding_item = false
+
 func _ready():
 	screen_size = get_viewport_rect().size
 
@@ -23,6 +27,23 @@ func _process(delta):
 	position.y = clamp(position.y, 0, screen_size.y)
 	
 	#set_animation(velocity)
+	
+	# input to drop picked up item
+	if Input.is_action_just_pressed("ui_accept"):		
+		if GameState.carried_item != null:
+			
+			var item = item_scene.instance()
+			
+			item.position = position
+			item.pickable_obj_resource = GameState.carried_item
+			item.player_node_path = self.get_path()
+			
+			get_node("../../main").add_child(item)
+			
+			GameState.carried_item = null
+			is_holding_item = false
+			
+	
 
 func check_movement(velocity : Vector2):
 	if Input.is_action_pressed("ui_right"):

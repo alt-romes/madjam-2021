@@ -13,15 +13,26 @@ _global_script_classes=[ {
 "class": "Dialogue",
 "language": "GDScript",
 "path": "res://dialogues/Dialogue.gd"
+}, {
+"base": "Resource",
+"class": "PickableObjData",
+"language": "GDScript",
+"path": "res://PickableObj/PickableObjData.gd"
 } ]
 _global_script_class_icons={
-"Dialogue": ""
+"Dialogue": "",
+"PickableObjData": ""
 }
 
 [application]
 
 config/name="vaunilha-mad-gj-2021"
+run/main_scene="res://NPC/test_npc.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+GameState="*res://GameState.gd"
 
 [rendering]
 

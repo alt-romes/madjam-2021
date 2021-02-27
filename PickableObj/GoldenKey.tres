@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://PickableObj/PickableObjData.gd" type="Script" id=1]
+[ext_resource path="res://PickableObj/key_02.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Golden Key"
+dialogue_line = "A shiny golden key. "
+texture = ExtResource( 2 )
