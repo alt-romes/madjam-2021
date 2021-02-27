@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://dialoguetexture.png" type="Texture" id=1]
+[ext_resource path="res://DialogueController.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Text Animation"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[node name="Dialogue" type="Node"]
+script = ExtResource( 2 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Box" type="NinePatchRect" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -360.0
+margin_top = -128.0
+margin_right = 360.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 720, 256 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Box"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 20.0
+margin_right = -30.0
+margin_bottom = -20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="Control/Box/MarginContainer"]
+margin_right = 660.0
+margin_bottom = 216.0
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "What"
+percent_visible = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Box/MarginContainer/Text"]
+"anims/Text Animation" = SubResource( 1 )
+[connection signal="dialogue_interact" from="." to="." method="_on_Dialogue_dialogue_interact"]
