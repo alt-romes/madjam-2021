@@ -21,7 +21,11 @@ var travelled_distance = 0
 var is_moving = false
 
 
+var brick_me = false
+
 func _ready():	
+	if brick_me:
+		return
 	screen_size = get_viewport_rect().size
 	sprite_node.texture = sprite_img
 	sprite_node.position = Vector2(sprite_img.get_width() / 2.0 * -1.0, sprite_img.get_height() / 2.0 * -1.0)
@@ -33,6 +37,8 @@ func _ready():
 	position.y = position.y / 24 * 24 + 12
 
 func _process(delta):
+	if brick_me:
+		return
 	
 	if Input.is_action_just_pressed("ui_accept"):		
 		var trigger_area : Area2D  = player_node.get_node("TriggerArea")		
@@ -52,6 +58,7 @@ func _process(delta):
 	position.y = clamp(position.y, sprite_img.get_height(), screen_size.y)
 
 func push(direction):
+	
 	match direction:
 		FACE_RIGHT:
 			velocity.x += 1.0
