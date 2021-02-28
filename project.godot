@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="vaunilha-mad-gj-2021"
-run/main_scene="res://NPC/test_npc.tscn"
+run/main_scene="res://ContainerScene.tscn"
 config/icon="res://icon.png"
 
 [autoload]

@@ -9,7 +9,7 @@ export var pickable_obj_resource : Resource
 
 onready var main_node = get_node("../../../../../") # p: Objects, p: YScroll, p: Level0, p: Levels, p: Main
 onready var player_node = main_node.get_node("Player")
-onready var dialogue_node = main_node.get_node("CanvasLayer/Dialogue")
+onready var dialogue_node = get_tree().root.get_node("Control/CanvasLayer/Dialogue")
 
 var sprite_node
 

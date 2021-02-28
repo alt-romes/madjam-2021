@@ -24,7 +24,7 @@ var current_sentence : int = 0
 func _start_new_dialogue(dialogue : Dialogue):
 	# Reset dialogue state
 	current_dialogue = dialogue
-	current_sentence = 0	
+	current_sentence = 0
 	# Show ui box
 	dialogue_box.visible = true
 	# Display first sentence

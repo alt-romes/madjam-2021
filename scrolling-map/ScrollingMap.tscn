@@ -1,11 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Level/Level.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scrolling-map/WorldController.gd" type="Script" id=3]
-[ext_resource path="res://dialogues/Dialogue.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scrolling-map/LevelController.gd" type="Script" id=5]
-[ext_resource path="res://PickableObj/PickableObjUI.tscn" type="PackedScene" id=6]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 3 )
@@ -29,9 +27,3 @@ drag_margin_left = 0.1
 drag_margin_top = 0.1
 drag_margin_right = 0.1
 drag_margin_bottom = 0.1
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Dialogue" parent="CanvasLayer" instance=ExtResource( 4 )]
-
-[node name="PickableObjUI" parent="." instance=ExtResource( 6 )]
