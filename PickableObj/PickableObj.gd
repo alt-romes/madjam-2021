@@ -42,7 +42,7 @@ func _process(delta):
 		
 		if trigger_area.overlaps_area($TriggerArea) and !player_node.is_holding_item:			
 			if !res.dialogue_line.empty():
-				dialogue_node.emit_signal("dialogue_interact", dialogue)
+				dialogue_node.emit_signal("dialogue_interact", dialogue, null)
 			emit_signal("pickup", res)
 			player_node.is_holding_item = true
 			queue_free()
