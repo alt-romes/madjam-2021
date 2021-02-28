@@ -63,7 +63,7 @@ __meta__ = {
 
 [node name="Text" type="Label" parent="Control/Box/MarginContainer"]
 margin_right = 530.0
-margin_bottom = 47.0
+margin_bottom = 48.0
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -73,5 +73,7 @@ percent_visible = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Box/MarginContainer/Text"]
 "anims/Text Animation" = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/Box/MarginContainer/Text"]
 [connection signal="dialogue_cancel" from="." to="." method="_on_Dialogue_dialogue_cancel"]
 [connection signal="dialogue_interact" from="." to="." method="_on_Dialogue_dialogue_interact"]

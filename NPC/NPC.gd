@@ -1,6 +1,7 @@
 extends Node2D
 
 export var player_node_path : NodePath
+export var voice : AudioStream
 export var sprite_img : Texture
 export var npc_name : String
 export var dialogue_list : PoolStringArray
@@ -24,7 +25,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("player_interact") and dialogue_list.size() > 0:		
 		var trigger_area : Area2D  = player_node.get_node("TriggerArea")		
 		if trigger_area.overlaps_area($TriggerArea):			
-			dialogue_node.emit_signal("dialogue_interact", dialogue)
+			dialogue_node.emit_signal("dialogue_interact", dialogue, voice)
 		
 
 #func say_dialogue() -> void:	
