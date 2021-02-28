@@ -15,6 +15,9 @@ export var level_size : PoolIntArray = [480, 336]
 
 func _ready():
 	
+	# Brick because the build will have no scrolling
+	return true
+	
 	# Levels must be organized in the tree by the correct order
 	for level in get_node("Levels").get_children():
 		level.hide()
@@ -30,6 +33,9 @@ func _ready():
 						  # and when the win state changes
 
 func _process(delta):
+	# Brick to disable scrolling
+	return true
+	
 	# Every frame check if player "changed" level
 	
 	var current_level_centerx = int(player.position.x/level_size[0])
