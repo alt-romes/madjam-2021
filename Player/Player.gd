@@ -76,6 +76,7 @@ func _physics_process(delta):
 			item.position.x = int(item.position.x) % int(level_size[0])
 			item.position.y = int(item.position.y) % int(level_size[1])
 			
+			get_parent().item_dropped(item) # parent = Main
 			$AudioStreamPlayer.play()
 			get_parent().item_dropped(item) # parent = Main
 			
