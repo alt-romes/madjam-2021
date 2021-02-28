@@ -1,5 +1,4 @@
-
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Level/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://PickableObj/PickableObj.tscn" type="PackedScene" id=2]
@@ -17,7 +16,6 @@
 [ext_resource path="res://Object/SpriteSheets_Files/Buford/talk/Buford_Animation_Talk.tres" type="Texture" id=14]
 [ext_resource path="res://Object/SpriteSheets_Files/Mom/idle/Mom_Animation_Idle.tres" type="Texture" id=15]
 [ext_resource path="res://Object/SpriteSheets_Files/Mom/talk/Mom_Animation_Talk.tres" type="Texture" id=16]
-[ext_resource path="res://Object/SpriteSheets_Files/Mom/idle/mom5.png" type="Texture" id=17]
 [ext_resource path="res://Sounds/daisy-voice.wav" type="AudioStream" id=18]
 [ext_resource path="res://Sounds/buford-voice.wav" type="AudioStream" id=19]
 [ext_resource path="res://Sounds/mum-voice.wav" type="AudioStream" id=20]
@@ -61,7 +59,7 @@ position = Vector2( 248, 192 )
 pickable_obj_resource = ExtResource( 4 )
 
 [node name="PushableObject" parent="YSort/Objects" instance=ExtResource( 7 )]
-position = Vector2( 384, 288 )
+position = Vector2( 336, 288 )
 sprite_img = ExtResource( 5 )
 
 [node name="PushTarget" parent="YSort/Objects" instance=ExtResource( 10 )]
@@ -85,8 +83,8 @@ pickable_objective_obj_resource = ExtResource( 3 )
 position = Vector2( 444, 304 )
 sprite_img_idle = ExtResource( 12 )
 sprite_img_talk = ExtResource( 14 )
-npc_name = "Buford"
 voice = ExtResource( 19 )
+npc_name = "Buford"
 dialogue_list_pre_objective = PoolStringArray( "Buford: Hey turd!!", "Buford: You know how this goes", "Buford: Give me your lunch!" )
 dialogue_list_after_objective = PoolStringArray( "Buford: YOU CALL THIS A LUNCH!! NO WONDER YOU\'RE SO FAT!!!" )
 pickable_objective_obj_resource = ExtResource( 13 )
@@ -95,8 +93,8 @@ pickable_objective_obj_resource = ExtResource( 13 )
 position = Vector2( 636, 448 )
 sprite_img_idle = ExtResource( 15 )
 sprite_img_talk = ExtResource( 16 )
-npc_name = "Mom"
 voice = ExtResource( 20 )
+npc_name = "Mom"
 dialogue_list_pre_objective = PoolStringArray( "Mom: Anon, I need you to do something", "Mom: Take the dog for a walk, will you\?" )
 dialogue_list_after_objective = PoolStringArray( "Mom: Thank you Anon! The doggo seems happy now." )
 pushable_objective_obj_nodepath = NodePath("../../Objects/PushTarget")
