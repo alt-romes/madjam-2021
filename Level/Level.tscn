@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Level/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://PickableObj/PickableObj.tscn" type="PackedScene" id=2]
@@ -14,6 +14,9 @@
 [ext_resource path="res://Object/SpriteSheets_Files/Dad/idle/dad2.png" type="Texture" id=12]
 [ext_resource path="res://PickableObj/Objects/Snack.tres" type="Resource" id=13]
 [ext_resource path="res://Object/SpriteSheets_Files/Mom/idle/mom5.png" type="Texture" id=14]
+[ext_resource path="res://Sounds/daisy-voice.wav" type="AudioStream" id=15]
+[ext_resource path="res://Sounds/buford-voice.wav" type="AudioStream" id=16]
+[ext_resource path="res://Sounds/mum-voice.wav" type="AudioStream" id=17]
 
 [node name="Level" type="Node2D"]
 
@@ -70,6 +73,7 @@ sprite_img = ExtResource( 11 )
 
 [node name="NPC" parent="YSort/NPCCollection" instance=ExtResource( 8 )]
 position = Vector2( 392, 288 )
+voice = ExtResource( 15 )
 sprite_img = ExtResource( 6 )
 npc_name = "Daisy"
 dialogue_list_pre_objective = PoolStringArray( "Daisy: Oh hi Anon", "Daisy: It\'s a beautiful day, isn\'t it\?", "Daisy: I love Spring, there are so many pretty flowers" )
@@ -78,6 +82,7 @@ pickable_objective_obj_resource = ExtResource( 3 )
 
 [node name="NPC2" parent="YSort/NPCCollection" instance=ExtResource( 8 )]
 position = Vector2( 612, 280 )
+voice = ExtResource( 16 )
 sprite_img = ExtResource( 12 )
 dialogue_list_pre_objective = PoolStringArray( "Buford: Hey turd!!", "Buford: You know how this goes", "Buford: Give me your lunch!" )
 dialogue_list_after_objective = PoolStringArray( "Buford: YOU CALL THIS A LUNCH!! NO WONDER YOU\'RE SO FAT!!!" )
@@ -85,6 +90,7 @@ pickable_objective_obj_resource = ExtResource( 13 )
 
 [node name="NPC3" parent="YSort/NPCCollection" instance=ExtResource( 8 )]
 position = Vector2( 636, 448 )
+voice = ExtResource( 17 )
 sprite_img = ExtResource( 14 )
 dialogue_list_pre_objective = PoolStringArray( "Mom: Anon, I need you to do something", "Mom: Take the dog for a walk, will you\?" )
 dialogue_list_after_objective = PoolStringArray( "Mom: Thank you Anon! The doggo seems happy now." )
