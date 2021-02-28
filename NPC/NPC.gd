@@ -2,6 +2,7 @@ extends Node2D
 
 enum objective_type { pickable, pushable }
 
+export var voice : AudioStream
 export var sprite_img : Texture
 export var npc_name : String
 export var dialogue_list_pre_objective : PoolStringArray
@@ -54,5 +55,5 @@ func _process(delta):
 			else:
 				dialogue = Dialogue.new(dialogue_list_after_objective)
 				
-			dialogue_node.emit_signal("dialogue_interact", dialogue)
+			dialogue_node.emit_signal("dialogue_interact", dialogue, voice)
 	
