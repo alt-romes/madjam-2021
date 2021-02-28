@@ -7,7 +7,7 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 3 )
-level_size = PoolIntArray( 408, 320 )
+level_size = PoolIntArray( 480, 336 )
 
 [node name="Levels" type="Node2D" parent="."]
 
@@ -20,7 +20,6 @@ position = Vector2( 161.519, 184.348 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
-zoom = Vector2( 0.6, 0.6 )
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 drag_margin_left = 0.1
