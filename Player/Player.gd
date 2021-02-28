@@ -48,9 +48,9 @@ func _physics_process(delta):
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-	#	$AnimatedSprite.play()
-	#else:
-	#	$AnimatedSprite.stop()
+		$AnimatedSprite.play("jump")
+	else:
+		$AnimatedSprite.play("default")
 	
 	#var motion = velocity * delta
 	velocity = move_and_slide(velocity)
@@ -126,6 +126,5 @@ func check_movement(velocity : Vector2):
 
 func set_animation(velocity : Vector2):
 	if velocity.x != 0:
-		$AnimatedSprite.animation = "walk"
 		$AnimatedSprite.flip_v = false
 		$AnimatedSprite.flip_h = velocity.x < 0
