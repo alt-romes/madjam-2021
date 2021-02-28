@@ -45,6 +45,7 @@ func _display_next_sentence():
 func _end_dialogue():
 	dialogue_box.visible = false
 	current_dialogue = null
+	GameState.is_talking = false
 	# perhaps signal player
 	# emit_signal("dialogue_ended") ?
 

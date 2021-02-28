@@ -2,7 +2,8 @@ extends Node2D
 
 enum objective_type { pickable, pushable }
 
-export var sprite_img : Texture
+export var sprite_img_idle : Texture
+export var sprite_img_talk : Texture
 export var npc_name : String
 export var dialogue_list_pre_objective : PoolStringArray
 export var dialogue_list_after_objective : PoolStringArray
@@ -24,8 +25,8 @@ onready var objective_completed = false
 signal set_dialogue(text)
 
 func _ready():	
-	sprite_node.texture = sprite_img
-	sprite_node.position = Vector2(sprite_img.get_width() / 2 * -1, sprite_img.get_height() * -1)
+	sprite_node.texture = sprite_img_idle
+	sprite_node.position = Vector2(sprite_img_idle.get_width() / 2 * -1, sprite_img_idle.get_height() * -1)
 	dialogue = Dialogue.new(dialogue_list_pre_objective)
 	
 	if npc_objective_type == objective_type.pushable:
@@ -34,6 +35,9 @@ func _ready():
 		pickable_objective_obj = pickable_objective_obj_resource
 	
 func _process(delta):
+	
+	if !GameState.is_talking:
+			sprite_node.texture = sprite_img_idle			
 	
 	if Input.is_action_just_pressed("player_interact") and dialogue.sentences.size() > 0:		
 		
@@ -55,4 +59,8 @@ func _process(delta):
 				dialogue = Dialogue.new(dialogue_list_after_objective)
 				
 			dialogue_node.emit_signal("dialogue_interact", dialogue)
+			sprite_node.texture = sprite_img_talk
+			GameState.is_talking = true
+		
+		
 	
