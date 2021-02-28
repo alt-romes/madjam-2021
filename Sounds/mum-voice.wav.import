@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mum-voice.wav-47133fe49ffce049dd6485f073d23dda.sample"
+
+[deps]
+
+source_file="res://Sounds/mum-voice.wav"
+dest_files=[ "res://.import/mum-voice.wav-47133fe49ffce049dd6485f073d23dda.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
