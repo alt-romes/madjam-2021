@@ -82,7 +82,7 @@ func _change_current_level(new_center : Vector2):
 		o.brick_me = true
 	for npc in newysortfake.get_node("NPCCollection").get_children():
 		npc.brick_me = true
-	#current_level.get_node("FakeYSorts").add_child(newysortfake)
+	current_level.get_node("FakeYSorts").add_child(newysortfake)
 	
 	current_level_center_index = new_center
 	

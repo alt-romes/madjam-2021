@@ -78,6 +78,7 @@ func _physics_process(delta):
 			
 			get_parent().item_dropped(item) # parent = Main
 			$AudioStreamPlayer.play()
+			get_parent().item_dropped(item) # parent = Main
 			
 			GameState.carried_item = null
 			is_holding_item = false
