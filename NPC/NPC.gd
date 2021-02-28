@@ -12,6 +12,8 @@ export var pushable_objective_obj_nodepath : NodePath
 export var pickable_objective_obj_resource : Resource
 export var npc_objective_type = objective_type.pickable
 
+var dialogue_list_wrong_objective : PoolStringArray
+
 onready var sprite_node = $Sprite
 onready var main_node = get_node("../../../../../") # p: YScroll, p: Level0, p: Levels, p: Main
 onready var player_node = main_node.get_node("Player")
@@ -20,6 +22,7 @@ onready var dialogue_node = get_tree().root.get_node("Control/CanvasLayer/Dialog
 var dialogue : Dialogue
 var pushable_objective_obj
 var pickable_objective_obj : PickableObjData
+var rng
 
 onready var objective_completed = false
 
@@ -30,10 +33,15 @@ func _ready():
 	sprite_node.position = Vector2(sprite_img_idle.get_width() / 2 * -1, sprite_img_idle.get_height() * -1)
 	dialogue = Dialogue.new(dialogue_list_pre_objective)
 	
+	dialogue_list_wrong_objective = PoolStringArray([npc_name + ": " + "You're such a weirdo omg", npc_name + ": " + "What is this Anon?", npc_name + ": " + "What should I do with this!?"])
+	
 	if npc_objective_type == objective_type.pushable:
 		pushable_objective_obj = get_node(pushable_objective_obj_nodepath)
 	elif npc_objective_type == objective_type.pickable:
 		pickable_objective_obj = pickable_objective_obj_resource
+		
+	rng = RandomNumberGenerator.new()
+	rng.randomize()
 	
 func _process(delta):
 	
@@ -55,7 +63,11 @@ func _process(delta):
 						objective_completed = true
 				
 			if !objective_completed:
-				dialogue = Dialogue.new(dialogue_list_pre_objective)
+				if npc_objective_type == objective_type.pickable and player_node.is_holding_item and GameState.carried_item != pickable_objective_obj:
+					var index = rng.randi_range(0, dialogue_list_wrong_objective.size() - 1)
+					dialogue = Dialogue.new([dialogue_list_wrong_objective[index]])
+				else:
+					dialogue = Dialogue.new(dialogue_list_pre_objective)
 			else:
 				dialogue = Dialogue.new(dialogue_list_after_objective)
 
