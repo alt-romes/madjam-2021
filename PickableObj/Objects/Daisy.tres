@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://PickableObj/PickableObjData.gd" type="Script" id=1]
-[ext_resource path="res://Object/SpriteSheets_Files/Items/flower/Flowers1.png" type="Texture" id=2]
+[ext_resource path="res://Object/SpriteSheets_Files/Items/flower/Daisy_Animation.tres" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )

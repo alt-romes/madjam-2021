@@ -1,6 +1,7 @@
 extends Node
 
 var carried_item : PickableObjData
+var is_talking = false
 
 signal picked_item_ui
 
