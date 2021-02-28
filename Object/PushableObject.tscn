@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Object/PushableObject.gd" type="Script" id=1]
-[ext_resource path="res://Sounds/push.wav" type="AudioStream" id=2]
+[ext_resource path="res://Sounds/shove.wav" type="AudioStream" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -23,3 +23,4 @@ shape = SubResource( 2 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+volume_db = 3.0
