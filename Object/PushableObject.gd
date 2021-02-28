@@ -1,10 +1,10 @@
 extends KinematicBody2D
 
-export var player_node_path : NodePath
 export var sprite_img : Texture
 
 onready var sprite_node = $Sprite
-onready var player_node = get_node(player_node_path)
+onready var main_node = get_node("../../../../../") # p: Objects, p: YScroll, p: Level0, p: Levels, p: Main
+onready var player_node = main_node.get_node("Player")
 
 var screen_size
 
@@ -75,9 +75,7 @@ func move_object(delta):
 	motion.x = int(round(velocity.x * delta))
 	motion.y = int(round(velocity.y * delta))
 	move_and_collide(motion)
-	if(velocity.length() > 0 and velocity.x > 0):
-		travelled_distance += motion.x
-	elif(velocity.length() > 0 and velocity.y >0):
-		travelled_distance += motion.y
+	if(velocity.length() > 0):
+		travelled_distance += motion.length()
 		
 	print(travelled_distance)

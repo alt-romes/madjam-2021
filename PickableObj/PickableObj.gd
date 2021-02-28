@@ -47,3 +47,4 @@ func _process(delta):
 			player_node.is_holding_item = true
 			queue_free()
 			
+

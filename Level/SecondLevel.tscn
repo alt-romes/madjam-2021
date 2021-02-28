@@ -15,7 +15,7 @@
 [ext_resource path="res://PickableObj/Objects/Snack.tres" type="Resource" id=13]
 [ext_resource path="res://Object/SpriteSheets_Files/Mom/idle/mom5.png" type="Texture" id=14]
 
-[node name="Level" type="Node2D"]
+[node name="SecondLevel" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -42,34 +42,34 @@ position = Vector2( 336, 224 )
 pickable_obj_resource = ExtResource( 3 )
 
 [node name="PickableObj5" parent="YSort/Objects" instance=ExtResource( 2 )]
-position = Vector2( 72, 72 )
+position = Vector2( 432, 312 )
 pickable_obj_resource = ExtResource( 13 )
 
 [node name="PickableObj2" parent="YSort/Objects" instance=ExtResource( 2 )]
-position = Vector2( 152, 240 )
+position = Vector2( 240, 192 )
 pickable_obj_resource = ExtResource( 4 )
 
 [node name="PickableObj3" parent="YSort/Objects" instance=ExtResource( 2 )]
-position = Vector2( 88, 200 )
+position = Vector2( 240, 288 )
 pickable_obj_resource = ExtResource( 5 )
 
 [node name="PickableObj4" parent="YSort/Objects" instance=ExtResource( 2 )]
-position = Vector2( 248, 192 )
+position = Vector2( 96, 288 )
 pickable_obj_resource = ExtResource( 4 )
 
 [node name="PushableObject" parent="YSort/Objects" instance=ExtResource( 7 )]
-position = Vector2( 384, 288 )
+position = Vector2( 216, 96 )
 sprite_img = ExtResource( 9 )
 
 [node name="PushTarget" parent="YSort/Objects" instance=ExtResource( 10 )]
-position = Vector2( 144, 288 )
-object_node_path = NodePath("../PushableObject")
+position = Vector2( 312, 288 )
+object_node_path = NodePath("../../../../SecondLevel/YSort/Objects/PushableObject")
 sprite_img = ExtResource( 11 )
 
 [node name="NPCCollection" type="Node2D" parent="YSort"]
 
 [node name="NPC" parent="YSort/NPCCollection" instance=ExtResource( 8 )]
-position = Vector2( 392, 288 )
+position = Vector2( 540, 304 )
 sprite_img = ExtResource( 6 )
 npc_name = "Daisy"
 dialogue_list_pre_objective = PoolStringArray( "Daisy: Oh hi Anon", "Daisy: It\'s a beautiful day, isn\'t it\?", "Daisy: I love Spring, there are so many pretty flowers" )
@@ -77,16 +77,16 @@ dialogue_list_after_objective = PoolStringArray( "Daisy: Oh my god, thank you!!1
 pickable_objective_obj_resource = ExtResource( 3 )
 
 [node name="NPC2" parent="YSort/NPCCollection" instance=ExtResource( 8 )]
-position = Vector2( 612, 280 )
+position = Vector2( 636, 256 )
 sprite_img = ExtResource( 12 )
 dialogue_list_pre_objective = PoolStringArray( "Buford: Hey turd!!", "Buford: You know how this goes", "Buford: Give me your lunch!" )
 dialogue_list_after_objective = PoolStringArray( "Buford: YOU CALL THIS A LUNCH!! NO WONDER YOU\'RE SO FAT!!!" )
 pickable_objective_obj_resource = ExtResource( 13 )
 
 [node name="NPC3" parent="YSort/NPCCollection" instance=ExtResource( 8 )]
-position = Vector2( 636, 448 )
+position = Vector2( 348, 304 )
 sprite_img = ExtResource( 14 )
 dialogue_list_pre_objective = PoolStringArray( "Mom: Anon, I need you to do something", "Mom: Take the dog for a walk, will you\?" )
 dialogue_list_after_objective = PoolStringArray( "Mom: Thank you Anon! The doggo seems happy now." )
-pushable_objective_obj_nodepath = NodePath("../../Objects/PushTarget")
+pushable_objective_obj_nodepath = NodePath("../../../../SecondLevel/YSort/Objects/PushTarget")
 npc_objective_type = 1
