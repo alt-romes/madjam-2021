@@ -16,10 +16,11 @@ script = ExtResource( 5 )
 right_border = 2
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 161.519, 184.348 )
+position = Vector2( 220.852, 183.428 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
+zoom = Vector2( 0.5, 0.5 )
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 drag_margin_left = 0.1
