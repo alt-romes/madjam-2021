@@ -4,6 +4,7 @@ enum objective_type { pickable, pushable }
 
 export var sprite_img_idle : Texture
 export var sprite_img_talk : Texture
+export var voice : AudioStream
 export var npc_name : String
 export var dialogue_list_pre_objective : PoolStringArray
 export var dialogue_list_after_objective : PoolStringArray
@@ -57,10 +58,9 @@ func _process(delta):
 				dialogue = Dialogue.new(dialogue_list_pre_objective)
 			else:
 				dialogue = Dialogue.new(dialogue_list_after_objective)
-				
-			dialogue_node.emit_signal("dialogue_interact", dialogue)
+
+			dialogue_node.emit_signal("dialogue_interact", dialogue, voice)
 			sprite_node.texture = sprite_img_talk
 			GameState.is_talking = true
-		
-		
+	
 	

@@ -1,4 +1,5 @@
-[gd_scene load_steps=17 format=2]
+
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Level/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://PickableObj/PickableObj.tscn" type="PackedScene" id=2]
@@ -16,6 +17,10 @@
 [ext_resource path="res://Object/SpriteSheets_Files/Buford/talk/Buford_Animation_Talk.tres" type="Texture" id=14]
 [ext_resource path="res://Object/SpriteSheets_Files/Mom/idle/Mom_Animation_Idle.tres" type="Texture" id=15]
 [ext_resource path="res://Object/SpriteSheets_Files/Mom/talk/Mom_Animation_Talk.tres" type="Texture" id=16]
+[ext_resource path="res://Object/SpriteSheets_Files/Mom/idle/mom5.png" type="Texture" id=17]
+[ext_resource path="res://Sounds/daisy-voice.wav" type="AudioStream" id=18]
+[ext_resource path="res://Sounds/buford-voice.wav" type="AudioStream" id=19]
+[ext_resource path="res://Sounds/mum-voice.wav" type="AudioStream" id=20]
 
 [node name="Level" type="Node2D"]
 
@@ -70,6 +75,7 @@ sprite_img = ExtResource( 11 )
 position = Vector2( 396, 304 )
 sprite_img_idle = ExtResource( 6 )
 sprite_img_talk = ExtResource( 9 )
+voice = ExtResource( 18 )
 npc_name = "Daisy"
 dialogue_list_pre_objective = PoolStringArray( "Daisy: Oh hi Anon", "Daisy: It\'s a beautiful day, isn\'t it\?", "Daisy: I love Spring, there are so many pretty flowers" )
 dialogue_list_after_objective = PoolStringArray( "Daisy: Oh my god, thank you!!1!!111!1!1", "Daisy: These are my favourite flowers", "Daisy: It\'s pretty hot here, maybe we can get a drink together\? ;)" )
@@ -80,6 +86,7 @@ position = Vector2( 444, 304 )
 sprite_img_idle = ExtResource( 12 )
 sprite_img_talk = ExtResource( 14 )
 npc_name = "Buford"
+voice = ExtResource( 19 )
 dialogue_list_pre_objective = PoolStringArray( "Buford: Hey turd!!", "Buford: You know how this goes", "Buford: Give me your lunch!" )
 dialogue_list_after_objective = PoolStringArray( "Buford: YOU CALL THIS A LUNCH!! NO WONDER YOU\'RE SO FAT!!!" )
 pickable_objective_obj_resource = ExtResource( 13 )
@@ -89,6 +96,7 @@ position = Vector2( 636, 448 )
 sprite_img_idle = ExtResource( 15 )
 sprite_img_talk = ExtResource( 16 )
 npc_name = "Mom"
+voice = ExtResource( 20 )
 dialogue_list_pre_objective = PoolStringArray( "Mom: Anon, I need you to do something", "Mom: Take the dog for a walk, will you\?" )
 dialogue_list_after_objective = PoolStringArray( "Mom: Thank you Anon! The doggo seems happy now." )
 pushable_objective_obj_nodepath = NodePath("../../Objects/PushTarget")
