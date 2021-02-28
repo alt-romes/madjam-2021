@@ -12,10 +12,7 @@ position = Vector2( 482, 211 )
 
 [node name="PushableObject" parent="." instance=ExtResource( 1 )]
 position = Vector2( 311, 282 )
-player_node_path = NodePath("../Player")
 sprite_img = ExtResource( 3 )
 
 [node name="NPC" parent="." instance=ExtResource( 4 )]
 position = Vector2( 749.653, 254.504 )
-player_node_path = NodePath("../Player")
-sprite_img = ExtResource( 3 )

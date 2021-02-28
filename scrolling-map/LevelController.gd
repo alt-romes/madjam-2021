@@ -25,9 +25,6 @@ func _ready():
 		"bottom": bottom_border
 	}
 
-func _process(delta):	
-	print(is_finished())
-
 func is_finished():
 	
 	var npc_collection = get_node("YSort/NPCCollection").get_children()
