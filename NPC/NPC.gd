@@ -1,34 +1,58 @@
 extends Node2D
 
-export var player_node_path : NodePath
+enum objective_type { pickable, pushable }
+
 export var sprite_img : Texture
 export var npc_name : String
-export var dialogue_list : PoolStringArray
+export var dialogue_list_pre_objective : PoolStringArray
+export var dialogue_list_after_objective : PoolStringArray
+export var pushable_objective_obj_nodepath : NodePath
+export var pickable_objective_obj_resource : Resource
+export var npc_objective_type = objective_type.pickable
 
 onready var sprite_node = $Sprite
-onready var main_node = get_node("../../../../") # p: YScroll, p: Level0, p: Levels, p: Main
+onready var main_node = get_node("../../../../../") # p: YScroll, p: Level0, p: Levels, p: Main
 onready var player_node = main_node.get_node("Player")
 onready var dialogue_node = get_tree().root.get_node("Control/CanvasLayer/Dialogue")
 
 var dialogue : Dialogue
+var pushable_objective_obj
+var pickable_objective_obj : PickableObjData
+
+onready var objective_completed = false
 
 signal set_dialogue(text)
 
 func _ready():	
 	sprite_node.texture = sprite_img
 	sprite_node.position = Vector2(sprite_img.get_width() / 2 * -1, sprite_img.get_height() * -1)
-	dialogue = Dialogue.new(dialogue_list)
-
+	dialogue = Dialogue.new(dialogue_list_pre_objective)
+	
+	if npc_objective_type == objective_type.pushable:
+		pushable_objective_obj = get_node(pushable_objective_obj_nodepath)
+	elif npc_objective_type == objective_type.pickable:
+		pickable_objective_obj = pickable_objective_obj_resource
+	
 func _process(delta):
 	
-	if Input.is_action_just_pressed("player_interact") and dialogue_list.size() > 0:		
-		var trigger_area : Area2D  = player_node.get_node("TriggerArea")		
-		if trigger_area.overlaps_area($TriggerArea):			
-			dialogue_node.emit_signal("dialogue_interact", dialogue)
+	if Input.is_action_just_pressed("player_interact") and dialogue.sentences.size() > 0:		
 		
-
-#func say_dialogue() -> void:	
-	#emit_signal("set_dialogue", dialogue_list[dialogue_index])
-	#print(dialogue_list[dialogue_index])
-	#dialogue_index = (dialogue_index + 1) % dialogue_list.size()
+		var trigger_area : Area2D  = player_node.get_node("TriggerArea")
+				
+		if trigger_area.overlaps_area($TriggerArea):
+			
+			if npc_objective_type == objective_type.pushable:			
+				objective_completed = pushable_objective_obj.in_place
+				print(pushable_objective_obj.in_place)
+			elif npc_objective_type == objective_type.pickable:
+				if player_node.is_holding_item:
+					if GameState.carried_item == pickable_objective_obj:
+						objective_completed = true
+				
+			if !objective_completed:
+				dialogue = Dialogue.new(dialogue_list_pre_objective)
+			else:
+				dialogue = Dialogue.new(dialogue_list_after_objective)
+				
+			dialogue_node.emit_signal("dialogue_interact", dialogue)
 	

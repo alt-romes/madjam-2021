@@ -21,8 +21,8 @@ func _ready():
 	collision_size = Vector2(frame.get_width() / 2.0 * $AnimatedSprite.scale.x, (frame.get_height() / 2.0 * $AnimatedSprite.scale.y))
 	$TriggerArea/TriggerShape.position.x = 0
 	$TriggerArea/TriggerShape.position.y = frame.get_height() / 10.0 * -1
-	$CollisionShape2D.position = $AnimatedSprite.position
-	$CollisionShape2D.get_shape().extents = collision_size
+	#$CollisionShape2D.position = $AnimatedSprite.position
+	#$CollisionShape2D.get_shape().extents = collision_size
 
 	$TriggerArea/TriggerShape.get_shape().extents = collision_size
 
@@ -42,8 +42,8 @@ func _physics_process(delta):
 	#else:
 	#	$AnimatedSprite.stop()
 	
-	var motion = velocity * delta
-	move_and_collide(motion)
+	#var motion = velocity * delta
+	velocity = move_and_slide(velocity)
 	# Technically there are no borders
 	#position.x = clamp(position.x, 0, screen_size.x)
 	#position.y = clamp(position.y, 0, screen_size.y)

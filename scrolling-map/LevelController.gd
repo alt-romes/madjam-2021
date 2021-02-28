@@ -25,8 +25,23 @@ func _ready():
 		"bottom": bottom_border
 	}
 
+func _process(delta):	
+	print(is_finished())
+
 func is_finished():
+	
+	var npc_collection = get_node("YSort/NPCCollection").get_children()
+	
+	var completed_count = 0
+	if npc_collection.size() > 0:
+		for npc in npc_collection:
+			if npc.objective_completed:
+				completed_count += 1				
+		if completed_count == npc_collection.size():
+			return true
+	
 	return false
+	
 
 # Item gets dropped into the current field
 func item_dropped(item : PickableObj):

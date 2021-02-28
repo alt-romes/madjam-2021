@@ -3,11 +3,14 @@
 [ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://PickableObj/PickableObj.tscn" type="PackedScene" id=3]
-[ext_resource path="res://PickableObj/Objects/GoldenKey.tres" type="Resource" id=4]
+[ext_resource path="res://PickableObj/Objects/Daisy.tres" type="Resource" id=4]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://PickableObj/PickableObjUI.tscn" type="PackedScene" id=6]
-[ext_resource path="res://PickableObj/Objects/SilverKey.tres" type="Resource" id=7]
-[ext_resource path="res://PickableObj/Objects/LongKey.tres" type="Resource" id=8]
+[ext_resource path="res://PickableObj/Objects/Dog.tres" type="Resource" id=7]
+[ext_resource path="res://PickableObj/Objects/Bozze.tres" type="Resource" id=8]
+
+
+
 
 [node name="main" type="Node"]
 
