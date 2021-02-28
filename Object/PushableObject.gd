@@ -78,4 +78,4 @@ func move_object(delta):
 	if(velocity.length() > 0):
 		travelled_distance += motion.length()
 		
-	print(travelled_distance)
+	$AudioStreamPlayer.play()

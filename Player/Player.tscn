@@ -58,7 +58,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "jump"
-frame = 4
+frame = 2
 playing = true
 
 [node name="TriggerArea" type="Area2D" parent="."]
@@ -73,3 +73,5 @@ modulate = Color( 0.717647, 0.25098, 0.25098, 1 )
 self_modulate = Color( 0.545098, 0.184314, 0.184314, 1 )
 position = Vector2( -0.206299, -0.0314941 )
 shape = SubResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
