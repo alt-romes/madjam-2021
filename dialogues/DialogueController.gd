@@ -51,6 +51,7 @@ func _end_dialogue():
 	voice_player.stop()
 	dialogue_box.visible = false
 	current_dialogue = null
+	GameState.is_talking = false
 	# perhaps signal player
 	# emit_signal("dialogue_ended") ?
 
