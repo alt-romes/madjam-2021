@@ -8,7 +8,6 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 3 )
-level_size = PoolIntArray( 480, 336 )
 
 [node name="Levels" type="Node2D" parent="."]
 
@@ -18,6 +17,9 @@ right_border = 2
 
 [node name="SecondLevel" parent="Levels" instance=ExtResource( 4 )]
 script = ExtResource( 5 )
+left_border = 2
+right_border = 2
+level_id = 1
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 220.852, 183.428 )
