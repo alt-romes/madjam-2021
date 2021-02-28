@@ -2,6 +2,7 @@ extends Node2D
 
 enum objective_type { pickable, pushable }
 
+export var player_node_path : NodePath
 export var voice : AudioStream
 export var sprite_img : Texture
 export var npc_name : String
