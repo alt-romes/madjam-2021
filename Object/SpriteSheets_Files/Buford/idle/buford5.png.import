@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/buford5.png-006fa521fa223c0a6372231abc17f83d.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Object/SpriteSheets_Files/Buford/idle/buford5.png"
+dest_files=[ "res://.import/buford5.png-006fa521fa223c0a6372231abc17f83d.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

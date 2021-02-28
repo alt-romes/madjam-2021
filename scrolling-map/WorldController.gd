@@ -69,11 +69,13 @@ func _limit_camera(side : String):
 	if side == "left":
 		limit_val = -current_level_center_index[0]*level_size[0]
 	elif side == "right":
-		limit_val = current_level_center_index[0]*level_size[0]
+		limit_val = current_level_center_index[0]*level_size[0] + level_size[0]
 	elif side == "top":
 		limit_val = -current_level_center_index[1]*level_size[1]
 	elif side == "bottom":
-		limit_val = current_level_center_index[1]*level_size[1]
+		limit_val = current_level_center_index[1]*level_size[1] + level_size[1] + 24
+	
+	print("Side: ", side, " Val ", limit_val)
 	
 	camera["limit_"+side] = limit_val
 
