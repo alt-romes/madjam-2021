@@ -20,7 +20,12 @@ var sentences : PoolStringArray
 signal set_dialogue(text)
 signal pickup(obj_name, resource)
 
-func _ready():		
+var brick_me = false
+
+func _ready():
+	if brick_me:
+		return
+	
 	res = pickable_obj_resource
 	
 	sentences.push_back(res.dialogue_line)
@@ -35,6 +40,9 @@ func _ready():
 	connect("pickup", GameState, "_on_item_pickup")
 
 func _process(delta):
+	if brick_me:
+		return
+	
 	# pickup / dialogue triggers
 	if Input.is_action_just_pressed("player_interact"):
 		

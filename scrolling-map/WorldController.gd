@@ -13,21 +13,35 @@ var levels_centers_drawn : Array = [] # Vector2[]
 # (All levels should have the same width and height per room)
 export var level_size : PoolIntArray = [480, 336]
 
+func _disable_nodes(n : Node):
+	for c in n.get_children():
+		_disable_nodes(c)
+	
+	n.set_process(false)
+	n.set_physics_process(false)
+	n.set_process_input(false)
+	n.pause_mode = PAUSE_MODE_STOP
+
+
 func _ready():
 	
 	# Levels must be organized in the tree by the correct order
 	for level in get_node("Levels").get_children():
 		level.hide()
-		#level.set_process(false)
 		levels.append(level)
+		level.get_parent().remove_child(level)
 	
 	current_level = levels[current_level_index]
+	get_node("Levels").add_child(current_level)
 	current_level.show()
 	#current_level.set_process(true)
 	levels_centers_drawn.append(Vector2(0, 0))
 	
 	_load_level_borders() # This will also be called whenever the level changes
 						  # and when the win state changes
+
+
+var level_is_finished = false
 
 func _process(delta):
 	# Every frame check if player "changed" level
@@ -39,32 +53,56 @@ func _process(delta):
 	if current_level_centerx != current_level_center_index.x || current_level_centery != current_level_center_index.y:
 		# Gets called every time the player crosses the border -> and will draw ahead at the next exit
 		
-		
-		# Before moving the center, add a fake YSort here
-		# Don't worry about clearing them, the actual Y Sort should always be on top...
-		current_level.get_node("FakeYSorts").add_child(current_level.get_node("YSort").duplicate())
-		
 		_change_current_level(Vector2(current_level_centerx, current_level_centery))
+		
+	
+	# Check if level has finished
+	# the new level will be drawn at the exit
+	if current_level.is_finished():
+		level_is_finished = true
+		
+		levels_centers_drawn.empty() # No levels centers drawn for this one yet
+		# Set next level at exit
+		# Hardcoded assuming its always at the right
+		_load_exit("right", true)
+		
+		#current_level.set_process(true)
+	# else don't change the level
 
 
 # Private functions
 
 func _change_current_level(new_center : Vector2):
 	print("Change level")
+	
+	# Before moving the center, add a fake YSort here
+	# Don't worry about clearing them, the actual Y Sort should always be on top...
+	var newysortfake = current_level.get_node("YSort").duplicate()
+	for o in newysortfake.get_node("Objects").get_children():
+		o.brick_me = true
+	for npc in newysortfake.get_node("NPCCollection").get_children():
+		npc.brick_me = true
+	#current_level.get_node("FakeYSorts").add_child(newysortfake)
+	
 	current_level_center_index = new_center
 	
-	# Just changed into a new center, so move the actual YSort to here
-	current_level.get_node("YSort").position = Vector2(current_level_center_index[0]*level_size[0], current_level_center_index[1]*level_size[1])
+	var new_center_coordinates = Vector2(current_level_center_index[0]*level_size[0], current_level_center_index[1]*level_size[1])
 	
-	# If the level is finished, the new level will be drawn at the exit
-	# TODO: to change level
-	if current_level.is_finished():
+	if level_is_finished:
+		level_is_finished = false
 		current_level_index += 1
-		current_level = levels[current_level_index]
-		current_level.show()
-		#current_level.set_process(true)
-		levels_centers_drawn.empty() # No levels centers drawn for this one yet
-	# else don't change the level
+		if current_level_index < len(levels):
+			# Still has more levels
+			current_level = levels[current_level_index]
+			# It has already been drawn,
+			# It was drawn when the finished condition was completed,
+			# It was drawn at the exit
+		else:
+			# No more levels, display win:
+			pass
+	
+	# Just changed into a new center, so move the actual YSort to here
+	current_level.get_node("YSort").position = new_center_coordinates
 	
 	# Load next borders for continuity (next and previous level ysort and tilemap)
 	_load_level_borders()
@@ -79,7 +117,7 @@ func _load_level_borders():
 			_reset_camera_limit(side)
 			
 		if borders[side] == Level.BorderType.EXIT_SIDE:
-			_load_exit(side)
+			_load_exit(side, false)
 
 func _limit_camera(side : String):
 	# Side is : left | right | top | bottom
@@ -110,7 +148,7 @@ func _reset_camera_limit(side : String):
 	
 	camera["limit_"+side] = limit_val
 
-func _load_exit(side : String):
+func _load_exit(side : String, is_next_level : bool): # @is_next_level : level to draw at exit is the next?
 	# Load the next or the same level next to the exit
 	
 	var next_level_center = Vector2(current_level_center_index[0]*level_size[0], current_level_center_index[1]*level_size[1])
@@ -124,20 +162,33 @@ func _load_exit(side : String):
 	elif side == "right":
 		next_level_center[0] += level_size[0]
 	
-	
-	if !_has_drawn_level(next_level_center):
-		# Tilemap
-		var level_at_exit = current_level.get_node("TileMap").duplicate()
+	if !is_next_level:
+		if !_has_drawn_level(next_level_center):
+			# Tilemap repeated at exit
+			var level_at_exit = current_level.get_node("TileMap").duplicate()
+			level_at_exit.position = next_level_center
+			level_at_exit.show()
+			
+			#print(level_at_exit.position)
+			
+			current_level.get_node("AdditionalTilemaps").add_child(level_at_exit)
+			
+			
+			
+			levels_centers_drawn.append(next_level_center)
+	else:
+		var level_at_exit_index = current_level_index + 1
+		var level_at_exit = null
+		if level_at_exit_index < len(levels):
+			level_at_exit = levels[level_at_exit_index]
+		else:
+			print("Game should end!")
+			return
+			
 		level_at_exit.position = next_level_center
 		level_at_exit.show()
+		get_node("Levels").add_child(current_level)
 		
-		#print(level_at_exit.position)
-		
-		current_level.get_node("AdditionalTilemaps").add_child(level_at_exit)
-		
-		
-		
-		levels_centers_drawn.append(next_level_center)
 		
 	# Even if has drawn, must change 
 
