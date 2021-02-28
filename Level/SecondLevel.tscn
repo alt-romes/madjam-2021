@@ -1,0 +1,100 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Level/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://PickableObj/PickableObj.tscn" type="PackedScene" id=2]
+[ext_resource path="res://PickableObj/Objects/Daisy.tres" type="Resource" id=3]
+[ext_resource path="res://PickableObj/Objects/Bozze.tres" type="Resource" id=4]
+[ext_resource path="res://PickableObj/Objects/Dog.tres" type="Resource" id=5]
+[ext_resource path="res://Object/SpriteSheets_Files/Daisy/idle/Daisy_Animation_Idle.tres" type="Texture" id=6]
+[ext_resource path="res://Object/PushableObject.tscn" type="PackedScene" id=7]
+[ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Object/SpriteSheets_Files/Items/dog/dog1.png" type="Texture" id=9]
+[ext_resource path="res://Object/PushTarget.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Object/x.png" type="Texture" id=11]
+[ext_resource path="res://Object/SpriteSheets_Files/Daisy/talk/Daisy_Animation_Talk.tres" type="Texture" id=12]
+[ext_resource path="res://PickableObj/Objects/Snack.tres" type="Resource" id=13]
+[ext_resource path="res://Object/SpriteSheets_Files/Buford/idle/Buford_Animation_Idle.tres" type="Texture" id=14]
+[ext_resource path="res://Object/SpriteSheets_Files/Buford/talk/Buford_Animation_Talk.tres" type="Texture" id=15]
+[ext_resource path="res://Object/SpriteSheets_Files/Mom/idle/Mom_Animation_Idle.tres" type="Texture" id=16]
+[ext_resource path="res://Object/SpriteSheets_Files/Mom/talk/Mom_Animation_Talk.tres" type="Texture" id=17]
+
+[node name="SecondLevel" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 24, 24 )
+format = 1
+tile_data = PoolIntArray( 0, 2, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 5, 4, 0, 6, 4, 0, 7, 4, 0, 8, 4, 0, 9, 4, 0, 10, 4, 0, 11, 4, 0, 12, 3, 0, 13, 3, 0, 14, 3, 0, 15, 3, 0, 16, 3, 0, 17, 4, 0, 18, 4, 0, 19, 4, 0, 20, 5, 0, 65536, 13, 0, 65537, 19, 0, 65538, 17, 0, 65539, 20, 0, 65540, 17, 0, 65541, 20, 0, 65542, 19, 0, 65543, 20, 0, 65544, 18, 0, 65545, 20, 0, 65546, 20, 0, 65547, 20, 0, 65548, 20, 0, 65549, 20, 0, 65550, 20, 0, 65551, 20, 0, 65552, 17, 0, 65553, 20, 0, 65554, 19, 0, 65555, 18, 0, 65556, 6, 0, 131072, 13, 0, 131073, 20, 0, 131074, 20, 0, 131075, 20, 0, 131076, 20, 0, 131077, 20, 0, 131078, 20, 0, 131079, 20, 0, 131080, 17, 0, 131081, 20, 0, 131082, 20, 0, 131083, 20, 0, 131084, 20, 0, 131085, 20, 0, 131086, 20, 0, 131087, 20, 0, 131088, 20, 0, 131089, 18, 0, 131090, 18, 0, 131091, 17, 0, 131092, 6, 0, 196608, 13, 0, 196609, 17, 0, 196610, 20, 0, 196611, 20, 0, 196612, 20, 0, 196613, 20, 0, 196614, 19, 0, 196615, 20, 0, 196616, 20, 0, 196617, 20, 0, 196618, 18, 0, 196619, 20, 0, 196620, 20, 0, 196621, 20, 0, 196622, 18, 0, 196623, 18, 0, 196624, 20, 0, 196625, 20, 0, 196626, 20, 0, 196627, 20, 0, 196628, 7, 0, 262144, 13, 0, 262145, 19, 0, 262146, 20, 0, 262147, 20, 0, 262148, 20, 0, 262149, 20, 0, 262150, 20, 0, 262151, 20, 0, 262152, 20, 0, 262153, 20, 0, 262154, 20, 0, 262155, 20, 0, 262156, 20, 0, 262157, 20, 0, 262158, 20, 0, 262159, 18, 0, 262160, 17, 0, 262161, 17, 0, 262162, 20, 0, 262163, 20, 0, 262164, 6, 0, 327680, 13, 0, 327681, 17, 0, 327682, 17, 0, 327683, 20, 0, 327684, 20, 0, 327685, 20, 0, 327686, 20, 0, 327687, 18, 0, 327688, 18, 0, 327689, 20, 0, 327690, 20, 0, 327691, 20, 0, 327692, 20, 0, 327693, 20, 0, 327694, 20, 0, 327695, 18, 0, 327696, 20, 0, 327697, 20, 0, 327698, 20, 0, 327699, 20, 0, 327700, 6, 0, 393217, 20, 0, 393218, 20, 0, 393219, 20, 0, 393220, 20, 0, 393221, 20, 0, 393222, 20, 0, 393223, 20, 0, 393224, 20, 0, 393225, 20, 0, 393226, 20, 0, 393227, 20, 0, 393228, 20, 0, 393229, 20, 0, 393230, 20, 0, 393231, 20, 0, 393232, 20, 0, 393233, 20, 0, 393234, 20, 0, 393235, 20, 0, 393236, 20, 0, 458753, 20, 0, 458754, 20, 0, 458755, 20, 0, 458756, 20, 0, 458757, 20, 0, 458758, 20, 0, 458759, 20, 0, 458760, 17, 0, 458761, 20, 0, 458762, 20, 0, 458763, 20, 0, 458764, 20, 0, 458765, 20, 0, 458766, 20, 0, 458767, 20, 0, 458768, 20, 0, 458769, 19, 0, 458770, 19, 0, 458771, 18, 0, 458772, 20, 0, 524289, 20, 0, 524290, 20, 0, 524291, 20, 0, 524292, 20, 0, 524293, 20, 0, 524294, 20, 0, 524295, 20, 0, 524296, 20, 0, 524297, 20, 0, 524298, 20, 0, 524299, 20, 0, 524300, 20, 0, 524301, 20, 0, 524302, 20, 0, 524303, 20, 0, 524304, 20, 0, 524305, 20, 0, 524306, 20, 0, 524307, 19, 0, 524308, 20, 0, 589824, 13, 0, 589825, 20, 0, 589826, 20, 0, 589827, 20, 0, 589828, 20, 0, 589829, 20, 0, 589830, 20, 0, 589831, 20, 0, 589832, 20, 0, 589833, 20, 0, 589834, 20, 0, 589835, 20, 0, 589836, 19, 0, 589837, 20, 0, 589838, 20, 0, 589839, 20, 0, 589840, 20, 0, 589841, 20, 0, 589842, 20, 0, 589843, 18, 0, 589844, 16, 0, 655360, 13, 0, 655361, 20, 0, 655362, 20, 0, 655363, 20, 0, 655364, 20, 0, 655365, 20, 0, 655366, 18, 0, 655367, 20, 0, 655368, 20, 0, 655369, 20, 0, 655370, 20, 0, 655371, 20, 0, 655372, 20, 0, 655373, 20, 0, 655374, 20, 0, 655375, 20, 0, 655376, 20, 0, 655377, 20, 0, 655378, 20, 0, 655379, 19, 0, 655380, 7, 0, 720896, 13, 0, 720897, 17, 0, 720898, 20, 0, 720899, 20, 0, 720900, 20, 0, 720901, 20, 0, 720902, 20, 0, 720903, 20, 0, 720904, 20, 0, 720905, 20, 0, 720906, 18, 0, 720907, 20, 0, 720908, 20, 0, 720909, 20, 0, 720910, 20, 0, 720911, 18, 0, 720912, 19, 0, 720913, 18, 0, 720914, 17, 0, 720915, 20, 0, 720916, 6, 0, 786432, 13, 0, 786433, 18, 0, 786434, 20, 0, 786435, 20, 0, 786436, 20, 0, 786437, 20, 0, 786438, 20, 0, 786439, 20, 0, 786440, 20, 0, 786441, 20, 0, 786442, 20, 0, 786443, 20, 0, 786444, 20, 0, 786445, 20, 0, 786446, 20, 0, 786447, 20, 0, 786448, 19, 0, 786449, 19, 0, 786450, 19, 0, 786451, 20, 0, 786452, 6, 0, 851968, 14, 0, 851969, 20, 0, 851970, 19, 0, 851971, 20, 0, 851972, 17, 0, 851973, 19, 0, 851974, 20, 0, 851975, 17, 0, 851976, 20, 0, 851977, 20, 0, 851978, 20, 0, 851979, 20, 0, 851980, 19, 0, 851981, 20, 0, 851982, 20, 0, 851983, 18, 0, 851984, 20, 0, 851985, 17, 0, 851986, 19, 0, 851987, 20, 0, 851988, 7, 0, 917504, 12, 0, 917505, 10, 0, 917506, 11, 0, 917507, 11, 0, 917508, 11, 0, 917509, 11, 0, 917510, 11, 0, 917511, 10, 0, 917512, 11, 0, 917513, 10, 0, 917514, 11, 0, 917515, 11, 0, 917516, 11, 0, 917517, 11, 0, 917518, 11, 0, 917519, 10, 0, 917520, 10, 0, 917521, 9, 0, 917522, 10, 0, 917523, 10, 0, 917524, 8, 0 )
+
+[node name="TileMap2" type="TileMap" parent="."]
+visible = false
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 24, 24 )
+format = 1
+
+[node name="AdditionalTilemaps" type="Node2D" parent="."]
+
+[node name="YSort" type="YSort" parent="."]
+position = Vector2( -204, -160 )
+
+[node name="Objects" type="Node2D" parent="YSort"]
+position = Vector2( 204, 160 )
+
+[node name="PickableObj" parent="YSort/Objects" instance=ExtResource( 2 )]
+position = Vector2( 336, 224 )
+pickable_obj_resource = ExtResource( 3 )
+
+[node name="PickableObj5" parent="YSort/Objects" instance=ExtResource( 2 )]
+position = Vector2( 432, 312 )
+pickable_obj_resource = ExtResource( 13 )
+
+[node name="PickableObj2" parent="YSort/Objects" instance=ExtResource( 2 )]
+position = Vector2( 240, 192 )
+pickable_obj_resource = ExtResource( 4 )
+
+[node name="PickableObj3" parent="YSort/Objects" instance=ExtResource( 2 )]
+position = Vector2( 240, 288 )
+pickable_obj_resource = ExtResource( 5 )
+
+[node name="PickableObj4" parent="YSort/Objects" instance=ExtResource( 2 )]
+position = Vector2( 96, 288 )
+pickable_obj_resource = ExtResource( 4 )
+
+[node name="PushableObject" parent="YSort/Objects" instance=ExtResource( 7 )]
+position = Vector2( 216, 96 )
+sprite_img = ExtResource( 9 )
+
+[node name="PushTarget" parent="YSort/Objects" instance=ExtResource( 10 )]
+position = Vector2( 312, 288 )
+object_node_path = NodePath("../../../../SecondLevel/YSort/Objects/PushableObject")
+sprite_img = ExtResource( 11 )
+
+[node name="NPCCollection" type="Node2D" parent="YSort"]
+
+[node name="NPC" parent="YSort/NPCCollection" instance=ExtResource( 8 )]
+position = Vector2( 540, 304 )
+sprite_img_idle = ExtResource( 6 )
+sprite_img_talk = ExtResource( 12 )
+npc_name = "Daisy"
+dialogue_list_pre_objective = PoolStringArray( "Daisy: Oh hi Anon", "Daisy: It\'s a beautiful day, isn\'t it\?", "Daisy: I love Spring, there are so many pretty flowers" )
+dialogue_list_after_objective = PoolStringArray( "Daisy: Oh my god, thank you!!1!!111!1!1", "Daisy: These are my favourite flowers", "Daisy: It\'s pretty hot here, maybe we can get a drink together\? ;)" )
+pickable_objective_obj_resource = ExtResource( 3 )
+
+[node name="NPC2" parent="YSort/NPCCollection" instance=ExtResource( 8 )]
+position = Vector2( 636, 256 )
+sprite_img_idle = ExtResource( 14 )
+sprite_img_talk = ExtResource( 15 )
+npc_name = "Buford"
+dialogue_list_pre_objective = PoolStringArray( "Buford: Hey turd!!", "Buford: You know how this goes", "Buford: Give me your lunch!" )
+dialogue_list_after_objective = PoolStringArray( "Buford: YOU CALL THIS A LUNCH!! NO WONDER YOU\'RE SO FAT!!!" )
+pickable_objective_obj_resource = ExtResource( 13 )
+
+[node name="NPC3" parent="YSort/NPCCollection" instance=ExtResource( 8 )]
+position = Vector2( 348, 304 )
+sprite_img_idle = ExtResource( 16 )
+sprite_img_talk = ExtResource( 17 )
+npc_name = "Mom"
+dialogue_list_pre_objective = PoolStringArray( "Mom: Anon, I need you to do something", "Mom: Take the dog for a walk, will you\?" )
+dialogue_list_after_objective = PoolStringArray( "Mom: Thank you Anon! The doggo seems happy now." )
+pushable_objective_obj_nodepath = NodePath("../../../../SecondLevel/YSort/Objects/PushTarget")
+npc_objective_type = 1
