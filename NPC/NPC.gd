@@ -26,9 +26,14 @@ var rng
 
 onready var objective_completed = false
 
+
+var brick_me = false
+
 signal set_dialogue(text)
 
 func _ready():	
+	if brick_me:
+		return
 	sprite_node.texture = sprite_img_idle
 	sprite_node.position = Vector2(sprite_img_idle.get_width() / 2 * -1, sprite_img_idle.get_height() * -1)
 	dialogue = Dialogue.new(dialogue_list_pre_objective)
@@ -44,6 +49,9 @@ func _ready():
 	rng.randomize()
 	
 func _process(delta):
+	
+	if brick_me:
+		return
 	
 	if !GameState.is_talking:
 			sprite_node.texture = sprite_img_idle			

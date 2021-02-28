@@ -11,6 +11,8 @@ var FACE_LEFT = 1
 var FACE_UP = 2
 var FACE_DOWN = 3
 
+var level_size = Vector2(480, 336)
+
 var item_scene = preload("res://PickableObj/PickableObj.tscn")
 
 var is_holding_item = false
@@ -67,12 +69,14 @@ func _physics_process(delta):
 			var item = item_scene.instance()
 			$AudioStreamPlayer.stream = drop_sound
 			
-			print(position, "   ", global_position)
-			item.global_position = global_position
+			item.position = position
 			item.pickable_obj_resource = GameState.carried_item
 			
-			get_parent().item_dropped(item) # parent = Main
+			# Item position needs to be placed in relation to the YSort
+			item.position.x = int(item.position.x) % int(level_size[0])
+			item.position.y = int(item.position.y) % int(level_size[1])
 			
+			get_parent().item_dropped(item) # parent = Main
 			$AudioStreamPlayer.play()
 			
 			GameState.carried_item = null
