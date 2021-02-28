@@ -27,3 +27,7 @@ func _ready():
 
 func is_finished():
 	return false
+
+# Item gets dropped into the current field
+func item_dropped(item : PickableObj):
+	get_node("YSort/Objects").add_child(item)
