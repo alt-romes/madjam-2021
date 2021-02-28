@@ -36,11 +36,12 @@ tile_data = PoolIntArray( 393216, 13, 0, 458752, 13, 0, 524288, 13, 0 )
 
 [node name="AdditionalTilemaps" type="Node2D" parent="."]
 
+[node name="FakeYSorts" type="Node2D" parent="."]
+
 [node name="YSort" type="YSort" parent="."]
-position = Vector2( -204, -160 )
+z_index = 1
 
 [node name="Objects" type="Node2D" parent="YSort"]
-position = Vector2( 204, 160 )
 
 [node name="PickableObj" parent="YSort/Objects" instance=ExtResource( 2 )]
 position = Vector2( 336, 224 )
@@ -70,7 +71,7 @@ sprite_img = ExtResource( 11 )
 [node name="NPCCollection" type="Node2D" parent="YSort"]
 
 [node name="NPC" parent="YSort/NPCCollection" instance=ExtResource( 8 )]
-position = Vector2( 396, 304 )
+position = Vector2( 192, 144 )
 sprite_img_idle = ExtResource( 6 )
 sprite_img_talk = ExtResource( 9 )
 voice = ExtResource( 18 )
@@ -80,7 +81,7 @@ dialogue_list_after_objective = PoolStringArray( "Daisy: Oh my god, thank you!!1
 pickable_objective_obj_resource = ExtResource( 3 )
 
 [node name="NPC2" parent="YSort/NPCCollection" instance=ExtResource( 8 )]
-position = Vector2( 444, 304 )
+position = Vector2( 240, 144 )
 sprite_img_idle = ExtResource( 12 )
 sprite_img_talk = ExtResource( 14 )
 voice = ExtResource( 19 )
@@ -90,7 +91,7 @@ dialogue_list_after_objective = PoolStringArray( "Buford: YOU CALL THIS A LUNCH!
 pickable_objective_obj_resource = ExtResource( 13 )
 
 [node name="NPC3" parent="YSort/NPCCollection" instance=ExtResource( 8 )]
-position = Vector2( 636, 448 )
+position = Vector2( 432, 288 )
 sprite_img_idle = ExtResource( 15 )
 sprite_img_talk = ExtResource( 16 )
 voice = ExtResource( 20 )
