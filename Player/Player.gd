@@ -17,6 +17,8 @@ var item_scene = preload("res://PickableObj/PickableObj.tscn")
 
 var is_holding_item = false
 
+onready var drop_sound : AudioStream
+
 func _ready():
 	screen_size = get_viewport_rect().size
 	frame = $AnimatedSprite.frames.get_frame("default", 0)
@@ -27,6 +29,14 @@ func _ready():
 	#$CollisionShape2D.get_shape().extents = collision_size
 
 	$TriggerArea/TriggerShape.get_shape().extents = collision_size
+	
+	var snd_file=File.new()
+	snd_file.open("res://Sounds/drop.wav", File.READ)
+	drop_sound = AudioStreamSample.new()
+	drop_sound.format = AudioStreamSample.FORMAT_16_BITS
+	drop_sound.stereo = true
+	drop_sound.data = snd_file.get_buffer(snd_file.get_len())
+	snd_file.close()
 
 func get_direction():
 	return direction
@@ -57,6 +67,7 @@ func _physics_process(delta):
 		if GameState.carried_item != null:
 			
 			var item = item_scene.instance()
+			$AudioStreamPlayer.stream = drop_sound
 			
 			item.position = position
 			item.pickable_obj_resource = GameState.carried_item
@@ -66,6 +77,7 @@ func _physics_process(delta):
 			item.position.y = int(item.position.y) % int(level_size[1])
 			
 			get_parent().item_dropped(item) # parent = Main
+			$AudioStreamPlayer.play()
 			
 			GameState.carried_item = null
 			is_holding_item = false

@@ -10,6 +10,7 @@ export var pickable_obj_resource : Resource
 onready var main_node = get_node("../../../../../") # p: Objects, p: YScroll, p: Level0, p: Levels, p: Main
 onready var player_node = main_node.get_node("Player")
 onready var dialogue_node = get_tree().root.get_node("Control/CanvasLayer/Dialogue")
+onready var pickup_sound : AudioStream
 
 var sprite_node
 
@@ -27,6 +28,14 @@ func _ready():
 		return
 	
 	res = pickable_obj_resource
+	
+	var snd_file=File.new()
+	snd_file.open("res://Sounds/pickup.wav", File.READ)
+	pickup_sound = AudioStreamSample.new()
+	pickup_sound.format = AudioStreamSample.FORMAT_16_BITS
+	pickup_sound.stereo = true
+	pickup_sound.data = snd_file.get_buffer(snd_file.get_len())
+	snd_file.close()
 	
 	sentences.push_back(res.dialogue_line)
 	dialogue = Dialogue.new(sentences)
@@ -48,9 +57,9 @@ func _process(delta):
 		
 		var trigger_area : Area2D  = player_node.get_node("TriggerArea")
 		
-		if trigger_area.overlaps_area($TriggerArea) and !player_node.is_holding_item:			
+		if trigger_area.overlaps_area($TriggerArea) and !player_node.is_holding_item:
 			if !res.dialogue_line.empty():
-				dialogue_node.emit_signal("dialogue_interact", dialogue, null)
+				dialogue_node.emit_signal("dialogue_interact", dialogue, pickup_sound)
 			emit_signal("pickup", res)
 			player_node.is_holding_item = true
 			queue_free()
